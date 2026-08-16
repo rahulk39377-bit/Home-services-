@@ -430,7 +430,13 @@ const STR = {
     add: 'Add', noAddresses: 'No saved addresses yet',
     notifBookingUpdates: 'Booking updates', notifPromos: 'Offers & promotions', notifReminders: 'Service reminders',
     privacyText: 'Your data is encrypted and never shared with third parties without consent. You can request deletion of your account and data anytime by contacting support@bolthome.com.',
-    close: 'Close'
+    close: 'Close',
+    areYouPartner: 'Are you a service partner?', partnerLogin: 'Partner Login',
+    partnerDashTitle: 'Partner Dashboard', selectYourName: 'Select your profile to continue',
+    totalEarnings: 'Total Earnings', pendingPayout: 'Pending Payout', totalJobs: 'Total Jobs',
+    yourBookings: 'Your Bookings', settled: 'Settled', pending: 'Pending',
+    customerPaid: 'Customer paid', yourEarning: 'Your earning (85%)', platformCut: 'Platform cut (15%)',
+    partnerLogout: 'Log Out', noBookingsYet: 'No bookings assigned yet'
   },
   hi: {
     tagline: 'Aapke ghar par bharosemand seva',
@@ -465,7 +471,13 @@ const STR = {
     add: 'Jodein', noAddresses: 'Abhi tak koi saved address nahi',
     notifBookingUpdates: 'Booking updates', notifPromos: 'Offers aur promotions', notifReminders: 'Seva reminders',
     privacyText: 'Aapka data encrypted hai aur bina sehmati ke kabhi share nahi kiya jaata. Account/data delete karne ke liye support@bolthome.com par sampark karein.',
-    close: 'Band Karein'
+    close: 'Band Karein',
+    areYouPartner: 'Kya aap service partner hain?', partnerLogin: 'Partner Login',
+    partnerDashTitle: 'Partner Dashboard', selectYourName: 'Aage badhne ke liye apna profile chunein',
+    totalEarnings: 'Kul Kamai', pendingPayout: 'Pending Payout', totalJobs: 'Kul Jobs',
+    yourBookings: 'Aapki Bookings', settled: 'Mil Gaya', pending: 'Pending',
+    customerPaid: 'Customer ne diya', yourEarning: 'Aapki kamai (85%)', platformCut: 'Platform ka hissa (15%)',
+    partnerLogout: 'Log Out', noBookingsYet: 'Abhi tak koi booking assign nahi hui'
   }
 };
 function t(key) { return (STR[state.lang || 'en'][key]) || key; }
@@ -492,10 +504,10 @@ const DATA = {
       { emoji: '🚨', label: 'Emergency Call', price: 899 },
     ],
     professionals: [
-      { id: 1, name: 'Rahul Mehta', initials: 'RM', rating: 4.9, jobs: 214, dist: '1.2 km', avail: true, skills: ['Wiring', 'Fan', 'AC'], about: 'Licensed electrician with 8+ years experience. Specializes in residential wiring and AC repair.', reviews: [{ user: 'Priya S.', stars: 5, text: 'Fixed my fan in 20 mins. Very professional!' }, { user: 'Amit K.', stars: 5, text: 'Quick response and fair pricing.' }] },
-      { id: 2, name: 'Suresh Patel', initials: 'SP', rating: 4.7, jobs: 156, dist: '2.4 km', avail: true, skills: ['Lighting', 'Switchboard'], about: 'Expert in lighting design and switchboard upgrades. Available same-day.', reviews: [{ user: 'Neha R.', stars: 4, text: 'Good work, arrived on time.' }] },
-      { id: 3, name: 'Vikram Singh', initials: 'VS', rating: 4.8, jobs: 301, dist: '0.8 km', avail: false, skills: ['Emergency', 'Wiring', 'AC'], about: '24/7 emergency electrician. Fastest response in the area.', reviews: [{ user: 'Rohan M.', stars: 5, text: 'Saved us during a power outage at night!' }] },
-      { id: 4, name: 'Anil Kumar', initials: 'AK', rating: 4.6, jobs: 98, dist: '3.1 km', avail: true, skills: ['Fan', 'Lighting'], about: 'Friendly and reliable. Great for ceiling fans and LED installations.', reviews: [] },
+      { id: 1, name: 'Rahul Mehta', initials: 'RM', rating: 4.9, jobs: 214, dist: '1.2 km', avail: true, upiId: 'rahulmehta.elec@okhdfcbank', skills: ['Wiring', 'Fan', 'AC'], about: 'Licensed electrician with 8+ years experience. Specializes in residential wiring and AC repair.', reviews: [{ user: 'Priya S.', stars: 5, text: 'Fixed my fan in 20 mins. Very professional!' }, { user: 'Amit K.', stars: 5, text: 'Quick response and fair pricing.' }] },
+      { id: 2, name: 'Suresh Patel', initials: 'SP', rating: 4.7, jobs: 156, dist: '2.4 km', avail: true, upiId: 'sureshpatel.elec@oksbi', skills: ['Lighting', 'Switchboard'], about: 'Expert in lighting design and switchboard upgrades. Available same-day.', reviews: [{ user: 'Neha R.', stars: 4, text: 'Good work, arrived on time.' }] },
+      { id: 3, name: 'Vikram Singh', initials: 'VS', rating: 4.8, jobs: 301, dist: '0.8 km', avail: false, upiId: 'vikramsingh.elec@okicici', skills: ['Emergency', 'Wiring', 'AC'], about: '24/7 emergency electrician. Fastest response in the area.', reviews: [{ user: 'Rohan M.', stars: 5, text: 'Saved us during a power outage at night!' }] },
+      { id: 4, name: 'Anil Kumar', initials: 'AK', rating: 4.6, jobs: 98, dist: '3.1 km', avail: true, upiId: 'anilkumar.elec@okaxis', skills: ['Fan', 'Lighting'], about: 'Friendly and reliable. Great for ceiling fans and LED installations.', reviews: [] },
     ]
   },
   plumber: {
@@ -518,9 +530,9 @@ const DATA = {
       { emoji: '🚨', label: 'Emergency Call', price: 899 },
     ],
     professionals: [
-      { id: 11, name: 'Manoj Yadav', initials: 'MY', rating: 4.8, jobs: 189, dist: '1.5 km', avail: true, skills: ['Tap Fix', 'Leak', 'Geyser'], about: 'Experienced plumber specializing in leak repairs and geyser installation.', reviews: [{ user: 'Sanjay T.', stars: 5, text: 'Fixed the leak in no time, very neat work.' }] },
-      { id: 12, name: 'Deepak Verma', initials: 'DV', rating: 4.6, jobs: 132, dist: '2.1 km', avail: true, skills: ['Toilet', 'Bathroom'], about: 'Expert in bathroom fittings and toilet installations.', reviews: [{ user: 'Kavita J.', stars: 4, text: 'Good quality work, reasonable price.' }] },
-      { id: 13, name: 'Sanjay Rao', initials: 'SR', rating: 4.9, jobs: 267, dist: '0.9 km', avail: false, skills: ['Emergency', 'Leak', 'Tap Fix'], about: '24/7 emergency plumber, quick response guaranteed.', reviews: [] },
+      { id: 11, name: 'Manoj Yadav', initials: 'MY', rating: 4.8, jobs: 189, dist: '1.5 km', avail: true, upiId: 'manojyadav.plum@oksbi', skills: ['Tap Fix', 'Leak', 'Geyser'], about: 'Experienced plumber specializing in leak repairs and geyser installation.', reviews: [{ user: 'Sanjay T.', stars: 5, text: 'Fixed the leak in no time, very neat work.' }] },
+      { id: 12, name: 'Deepak Verma', initials: 'DV', rating: 4.6, jobs: 132, dist: '2.1 km', avail: true, upiId: 'deepakverma.plum@okhdfcbank', skills: ['Toilet', 'Bathroom'], about: 'Expert in bathroom fittings and toilet installations.', reviews: [{ user: 'Kavita J.', stars: 4, text: 'Good quality work, reasonable price.' }] },
+      { id: 13, name: 'Sanjay Rao', initials: 'SR', rating: 4.9, jobs: 267, dist: '0.9 km', avail: false, upiId: 'sanjayrao.plum@okicici', skills: ['Emergency', 'Leak', 'Tap Fix'], about: '24/7 emergency plumber, quick response guaranteed.', reviews: [] },
     ]
   },
   cleaner: {
@@ -543,9 +555,9 @@ const DATA = {
       { emoji: '📦', label: 'Deep Cleaning', price: 999 },
     ],
     professionals: [
-      { id: 21, name: 'Sunita Devi', initials: 'SD', rating: 4.9, jobs: 341, dist: '1.0 km', avail: true, skills: ['Home Clean', 'Kitchen', 'Deep Clean'], about: 'Highly rated cleaner with attention to detail. Brings own supplies.', reviews: [{ user: 'Ritu M.', stars: 5, text: 'House looked spotless after her visit!' }] },
-      { id: 22, name: 'Pooja Sharma', initials: 'PS', rating: 4.7, jobs: 198, dist: '1.8 km', avail: true, skills: ['Sofa', 'Windows', 'Bathroom'], about: 'Specializes in sofa and window deep cleaning.', reviews: [{ user: 'Manish K.', stars: 5, text: 'Sofa looks brand new now.' }] },
-      { id: 23, name: 'Rekha Singh', initials: 'RS', rating: 4.5, jobs: 87, dist: '2.6 km', avail: true, skills: ['Home Clean', 'Bathroom'], about: 'Reliable and punctual, great for weekly cleaning.', reviews: [] },
+      { id: 21, name: 'Sunita Devi', initials: 'SD', rating: 4.9, jobs: 341, dist: '1.0 km', avail: true, upiId: 'sunitadevi.clean@oksbi', skills: ['Home Clean', 'Kitchen', 'Deep Clean'], about: 'Highly rated cleaner with attention to detail. Brings own supplies.', reviews: [{ user: 'Ritu M.', stars: 5, text: 'House looked spotless after her visit!' }] },
+      { id: 22, name: 'Pooja Sharma', initials: 'PS', rating: 4.7, jobs: 198, dist: '1.8 km', avail: true, upiId: 'poojasharma.clean@okaxis', skills: ['Sofa', 'Windows', 'Bathroom'], about: 'Specializes in sofa and window deep cleaning.', reviews: [{ user: 'Manish K.', stars: 5, text: 'Sofa looks brand new now.' }] },
+      { id: 23, name: 'Rekha Singh', initials: 'RS', rating: 4.5, jobs: 87, dist: '2.6 km', avail: true, upiId: 'rekhasingh.clean@okhdfcbank', skills: ['Home Clean', 'Bathroom'], about: 'Reliable and punctual, great for weekly cleaning.', reviews: [] },
     ]
   }
 };
@@ -592,13 +604,14 @@ const state = {
   pendingBooking: null,
   invoiceBooking: null,
   bookings: persisted.bookings || [
-    { id: 101, service: 'Fan Installation', pro: 'Rahul Mehta', date: 'Today, 3:00 PM', status: 'confirmed', price: 344, serviceAmount: 299, paid: false, paymentMethod: 'Pay later', invoiceNo: null },
-    { id: 102, service: 'Wiring Fix', pro: 'Suresh Patel', date: '28 Jul 2026', status: 'done', price: 516, serviceAmount: 449, paid: true, paymentMethod: 'UPI', invoiceNo: 'INV-2026-102', note: 'Kitchen wiring short circuit' },
+    { id: 101, service: 'Fan Installation', pro: 'Rahul Mehta', proUpi: 'rahulmehta.elec@okhdfcbank', date: 'Today, 3:00 PM', status: 'confirmed', price: 299, serviceAmount: 299, commission: 45, proPayout: 254, proSettled: false, paid: false, paymentMethod: null, invoiceNo: null },
+    { id: 102, service: 'Wiring Fix', pro: 'Suresh Patel', proUpi: 'sureshpatel.elec@oksbi', date: '28 Jul 2026', status: 'done', price: 449, serviceAmount: 449, commission: 67, proPayout: 382, proSettled: true, paid: true, paymentMethod: 'UPI', invoiceNo: 'INV-2026-102', note: 'Kitchen wiring short circuit' },
   ],
   activeTab: 'upcoming',
   mapSelected: null,
   savedAddresses: persisted.savedAddresses || [],
-  notifPrefs: persisted.notifPrefs || { bookingUpdates: true, promos: true, reminders: true }
+  notifPrefs: persisted.notifPrefs || { bookingUpdates: true, promos: true, reminders: true },
+  loggedInPartner: null
 };
 
 /* ---------------- ICONS (inline SVGs) ---------------- */
@@ -649,7 +662,9 @@ function render() {
     proProfile: renderProProfile,
     profile: renderProfile,
     partner: renderPartner,
-    addresses: renderAddresses
+    addresses: renderAddresses,
+    partnerLogin: renderPartnerLogin,
+    partnerDashboard: renderPartnerDashboard
   };
   const fn = screens[state.screen] || renderSplash;
   vp.appendChild(fn());
@@ -700,8 +715,10 @@ function renderLogin() {
         <button class="btn-outline">${ICONS.apple} Apple</button>
       </div>
       <div class="bottom-note">${t('noAccount')} <b id="go-signup">${t('signUp')}</b></div>
+      <div class="bottom-note" style="margin-top:4px">${t('areYouPartner')} <b id="go-partner-login">${t('partnerLogin')}</b></div>
     </div>
   `);
+  d.querySelector('#go-partner-login').onclick = () => { state.screen = 'partnerLogin'; render(); };
   d.querySelector('#btn-login').onclick = () => {
     const email = d.querySelector('#login-email').value.trim() || 'demo@bolthome.com';
     state.user = { name: 'Alex Kumar', email, initials: 'AK' };
@@ -1047,11 +1064,18 @@ function renderBooking() {
       render();
     } else {
       const svc = data.services[state.selectedService];
+      let assignedPro = state.selectedPro;
+      if (!assignedPro) {
+        assignedPro = data.professionals.find(p => p.avail && p.skills.some(s => svc.label.toLowerCase().includes(s.toLowerCase()) || s.toLowerCase().includes(svc.label.split(' ')[0].toLowerCase())))
+          || data.professionals.find(p => p.avail)
+          || data.professionals[0];
+      }
       state.pendingBooking = {
         id: Date.now(),
         service: svc.label,
         emoji: svc.emoji,
-        pro: state.selectedPro ? state.selectedPro.name : 'Assigned soon',
+        pro: assignedPro ? assignedPro.name : 'Assigned soon',
+        proUpi: assignedPro ? assignedPro.upiId : null,
         date: state.selectedSlot,
         status: 'confirmed',
         price: svc.price,
@@ -1074,15 +1098,14 @@ function renderPayment() {
   if (!b) { state.screen = 'home'; return renderHome(); }
 
   const commission = calcCommission(b.price);
-  const total = b.price + commission;
-  const upiUri = `upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_PAYEE_NAME)}&am=${total}&cu=INR&tn=${encodeURIComponent(b.service + ' booking')}`;
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiUri)}`;
+  const proPayout = b.price - commission;
+  const upiUri = `upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_PAYEE_NAME)}&am=${b.price}&cu=INR&tn=${encodeURIComponent(b.service + ' booking')}`;
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUri)}`;
 
   const methods = [
     { id: 'upi', icon: '📱', bg: '#E8F8EF', title: 'UPI', sub: 'GPay, PhonePe, Paytm' },
     { id: 'card', icon: '💳', bg: '#E7F0FF', title: 'Credit / Debit Card', sub: 'Visa, Mastercard, RuPay' },
     { id: 'wallet', icon: '👛', bg: '#FFF6E0', title: 'BoltHome Wallet', sub: 'Balance: ₹1,250' },
-    { id: 'cod', icon: '💵', bg: '#F5F5F5', title: 'Pay after service', sub: 'Cash or UPI on completion' },
   ];
 
   const d = el(`
@@ -1095,10 +1118,9 @@ function renderPayment() {
       <div style="padding:8px 20px 20px;flex:1">
         <div class="pay-summary">
           <div class="pay-row"><span>Service</span><span style="font-weight:600;color:var(--ink)">${b.emoji || '⚡'} ${b.service}</span></div>
+          <div class="pay-row"><span>Professional</span><span style="font-weight:600;color:var(--ink)">${b.pro}</span></div>
           <div class="pay-row"><span>Time slot</span><span style="font-weight:600;color:var(--ink)">${b.date}</span></div>
-          <div class="pay-row"><span>Service charge</span><span>₹${b.price}</span></div>
-          <div class="pay-row"><span>Platform fee (15%)</span><span>₹${commission}</span></div>
-          <div class="pay-row total"><span>Total payable</span><span>₹${total}</span></div>
+          <div class="pay-row total"><span>Total payable</span><span>₹${b.price}</span></div>
         </div>
 
         <div class="section-title">Select payment method</div>
@@ -1115,7 +1137,7 @@ function renderPayment() {
 
         ${state.paymentMethod === 'upi' ? `
           <div style="background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-md);padding:18px;margin-top:14px;text-align:center">
-            <div style="font-size:12.5px;color:var(--ink-soft);margin-bottom:12px;font-weight:600">Scan &amp; Pay ₹${total}</div>
+            <div style="font-size:12.5px;color:var(--ink-soft);margin-bottom:12px;font-weight:600">Scan &amp; Pay ₹${b.price}</div>
             <img src="${qrUrl}" alt="UPI QR Code" width="180" height="180" style="border-radius:12px;border:1px solid var(--border)">
             <div style="font-size:13px;font-weight:700;margin-top:12px;color:var(--blue-900)">${UPI_ID}</div>
             <button class="btn-outline" id="upi-copy" style="margin-top:10px">📋 Copy UPI ID</button>
@@ -1126,7 +1148,7 @@ function renderPayment() {
 
       <div class="bottom-fixed">
         <button class="btn-primary" id="pay-now">
-          ${state.paymentMethod === 'cod' ? 'Confirm Booking' : state.paymentMethod === 'upi' ? "I've Paid — Confirm" : `Pay ₹${total}`}
+          ${state.paymentMethod === 'upi' ? "I've Paid — Confirm" : `Pay ₹${b.price}`}
         </button>
       </div>
     </div>
@@ -1158,19 +1180,20 @@ function renderPayment() {
       }).catch(() => alert('UPI ID: ' + UPI_ID));
     };
   }
-
   d.querySelector('#pay-now').onclick = () => {
-    const methodLabels = { upi: 'UPI', card: 'Card', wallet: 'Wallet', cod: 'Pay later' };
-    const isPaid = state.paymentMethod !== 'cod';
+    const methodLabels = { upi: 'UPI', card: 'Card', wallet: 'Wallet' };
     const invNo = 'INV-2026-' + String(b.id).slice(-4);
 
     const finalBooking = {
       ...b,
-      paid: isPaid,
+      paid: true,
       paymentMethod: methodLabels[state.paymentMethod],
       invoiceNo: invNo,
-      serviceAmount: b.serviceAmount != null ? b.serviceAmount : b.price,
-      price: (b.serviceAmount != null ? b.serviceAmount : b.price) + calcCommission(b.serviceAmount != null ? b.serviceAmount : b.price),
+      serviceAmount: b.price,
+      commission: commission,
+      proPayout: proPayout,
+      proSettled: false,
+      price: b.price,
       status: 'confirmed'
     };
     state.bookings.unshift(finalBooking);
@@ -1181,35 +1204,25 @@ function renderPayment() {
       <div class="modal-overlay">
         <div class="modal-card">
           <div class="check-circle">${ICONS.check}</div>
-          <h3>${isPaid ? 'Payment Successful!' : 'Booking Confirmed!'}</h3>
-          <p>${isPaid
-            ? `₹${finalBooking.price} paid via ${finalBooking.paymentMethod}. Invoice ${invNo} generated.`
-            : 'Pay after the service is completed. We\'ve notified nearby electricians.'}</p>
-          <button class="btn-primary" id="view-inv" style="margin-bottom:10px">${isPaid ? 'View Invoice' : 'View Bookings'}</button>
-          ${isPaid ? '<button class="btn-outline" id="go-bookings">Go to Bookings</button>' : ''}
+          <h3>Payment Successful!</h3>
+          <p>₹${finalBooking.price} paid via ${finalBooking.paymentMethod}. Invoice ${invNo} generated.</p>
+          <button class="btn-primary" id="view-inv" style="margin-bottom:10px">View Invoice</button>
+          <button class="btn-outline" id="go-bookings">Go to Bookings</button>
         </div>
       </div>
     `);
     document.getElementById('viewport').appendChild(overlay);
 
-    if (isPaid) {
-      overlay.querySelector('#view-inv').onclick = () => {
-        state.invoiceBooking = finalBooking;
-        state.screen = 'invoice';
-        render();
-      };
-      overlay.querySelector('#go-bookings').onclick = () => {
-        state.screen = 'bookings';
-        state.activeTab = 'upcoming';
-        render();
-      };
-    } else {
-      overlay.querySelector('#view-inv').onclick = () => {
-        state.screen = 'bookings';
-        state.activeTab = 'upcoming';
-        render();
-      };
-    }
+    overlay.querySelector('#view-inv').onclick = () => {
+      state.invoiceBooking = finalBooking;
+      state.screen = 'invoice';
+      render();
+    };
+    overlay.querySelector('#go-bookings').onclick = () => {
+      state.screen = 'bookings';
+      state.activeTab = 'upcoming';
+      render();
+    };
   };
 
   return d;
@@ -1265,11 +1278,7 @@ function renderInvoice() {
                     <div style="font-size:11.5px;color:var(--ink-soft);margin-top:2px">${b.date} • ${b.pro}</div>
                     ${b.note ? `<div style="font-size:11.5px;color:var(--ink-soft);margin-top:2px">Note: ${b.note}</div>` : ''}
                   </td>
-                  <td class="right">₹${b.serviceAmount != null ? b.serviceAmount : Math.round((b.price) / (1 + COMMISSION_RATE))}</td>
-                </tr>
-                <tr>
-                  <td>Platform fee (15%)</td>
-                  <td class="right">₹${b.serviceAmount != null ? calcCommission(b.serviceAmount) : (b.price - Math.round((b.price) / (1 + COMMISSION_RATE)))}</td>
+                  <td class="right">₹${b.serviceAmount != null ? b.serviceAmount : b.price}</td>
                 </tr>
               </tbody>
             </table>
@@ -1280,6 +1289,14 @@ function renderInvoice() {
               </div>
               <div class="amount">₹${b.price}</div>
             </div>
+          </div>
+
+          <div class="inv-section" style="background:var(--surface);border-radius:var(--radius-md);padding:14px;margin-top:4px">
+            <div class="inv-section-title" style="color:var(--blue-600)">Payout breakdown (internal)</div>
+            <div class="inv-row"><span class="label">Your commission (15%)</span><span class="value" style="color:var(--green)">₹${b.commission != null ? b.commission : calcCommission(b.price)}</span></div>
+            <div class="inv-row"><span class="label">Payable to ${b.pro}</span><span class="value">₹${b.proPayout != null ? b.proPayout : (b.price - calcCommission(b.price))}</span></div>
+            ${b.proUpi ? `<div class="inv-row"><span class="label">Their UPI ID</span><span class="value">${b.proUpi}</span></div>` : ''}
+            <div class="inv-row"><span class="label">Payout status</span><span class="value" style="color:${b.proSettled ? 'var(--green)' : 'var(--yellow-600)'}">${b.proSettled ? 'Settled' : 'Pending'}</span></div>
           </div>
         </div>
 
@@ -1340,7 +1357,7 @@ function renderBookings() {
             </div>
             <div class="booking-meta">👤 ${b.pro}</div>
             <div class="booking-meta">🕐 ${b.date}</div>
-            <div class="booking-meta">₹${b.price}${b.paid ? ' · Paid' : b.paymentMethod === 'Pay later' ? ' · Pay later' : ''}</div>
+            <div class="booking-meta">₹${b.price}${b.paid ? ' · Paid' : ' · Pending'}</div>
             <div class="booking-actions">
               ${b.status !== 'done' ? `
                 <button class="mini-btn cancel" data-action="cancel">${t('cancel')}</button>
@@ -1348,10 +1365,8 @@ function renderBookings() {
               ` : ''}
               ${b.paid && b.invoiceNo ? `
                 <button class="mini-btn track" data-action="invoice" style="${b.status !== 'done' ? '' : 'flex:1'}">${t('invoice')}</button>
-              ` : !b.paid && b.paymentMethod === 'Pay later' ? `
+              ` : !b.paid ? `
                 <button class="mini-btn track" data-action="pay" style="flex:1">${t('payNow')}</button>
-              ` : b.paid ? `
-                <button class="mini-btn track" data-action="invoice" style="flex:1">${t('viewInvoice')}</button>
               ` : ''}
             </div>
           </div>
@@ -1689,6 +1704,115 @@ function renderPartner() {
       state.screen = 'home';
       render();
     };
+  };
+  return d;
+}
+
+function getAllProfessionals() {
+  const list = [];
+  Object.keys(DATA).forEach(type => {
+    DATA[type].professionals.forEach(p => list.push({ ...p, serviceType: type }));
+  });
+  return list;
+}
+
+function renderPartnerLogin() {
+  const pros = getAllProfessionals();
+  const d = el(`
+    <div class="auth-wrap" style="padding-top:30px">
+      <button class="back-arrow" id="pl-back">${ICONS.back}</button>
+      <div class="auth-logo">${ICONS.bolt}</div>
+      <div class="auth-title">${t('partnerDashTitle')}</div>
+      <div class="auth-sub">${t('selectYourName')}</div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        ${pros.map(p => `
+          <div class="elec-card" data-id="${p.id}" data-type="${p.serviceType}" style="cursor:pointer">
+            <div class="avatar">${p.initials}</div>
+            <div class="elec-info">
+              <div class="name">${p.name}</div>
+              <div class="elec-meta">
+                <span class="star">★ ${p.rating}</span>
+                <span>•</span>
+                <span>${DATA[p.serviceType].label}</span>
+              </div>
+            </div>
+            <span class="chevron">${ICONS.chevron}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `);
+  d.querySelector('#pl-back').onclick = () => { state.screen = 'login'; render(); };
+  d.querySelectorAll('.elec-card').forEach(card => {
+    card.onclick = () => {
+      const type = card.dataset.type;
+      const pro = DATA[type].professionals.find(p => p.id === +card.dataset.id);
+      state.loggedInPartner = { ...pro, serviceType: type };
+      state.screen = 'partnerDashboard';
+      render();
+    };
+  });
+  return d;
+}
+
+function renderPartnerDashboard() {
+  const partner = state.loggedInPartner;
+  if (!partner) { state.screen = 'partnerLogin'; return renderPartnerLogin(); }
+
+  const myBookings = state.bookings.filter(b => b.pro === partner.name);
+  const settled = myBookings.filter(b => b.proSettled);
+  const pendingList = myBookings.filter(b => b.paid && !b.proSettled);
+  const totalEarnings = settled.reduce((sum, b) => sum + (b.proPayout || 0), 0);
+  const pendingPayout = pendingList.reduce((sum, b) => sum + (b.proPayout || 0), 0);
+
+  const d = el(`
+    <div style="display:flex;flex-direction:column;min-height:100vh">
+      <div class="profile-hero">
+        <button class="back-arrow" style="position:absolute;left:16px;top:16px;margin:0;background:rgba(255,255,255,0.2);border-color:transparent;color:#fff" id="pd-back">${ICONS.back}</button>
+        <div class="profile-avatar">${partner.initials}</div>
+        <h2>${partner.name}</h2>
+        <div class="verified-row">
+          <span class="verified-badge">${DATA[partner.serviceType].emoji} ${DATA[partner.serviceType].label}</span>
+          <span class="verified-badge">★ ${partner.rating}</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat"><b>₹${totalEarnings}</b><span>${t('totalEarnings')}</span></div>
+        <div class="stat"><b>₹${pendingPayout}</b><span>${t('pendingPayout')}</span></div>
+        <div class="stat"><b>${myBookings.length}</b><span>${t('totalJobs')}</span></div>
+      </div>
+
+      <div style="padding:24px 20px 20px;flex:1">
+        <div class="section-title">${t('yourBookings')}</div>
+        ${myBookings.length === 0 ? `
+          <div class="empty-state"><div class="emoji">📋</div><div>${t('noBookingsYet')}</div></div>
+        ` : myBookings.map(b => `
+          <div class="booking-card" style="margin:0 0 12px">
+            <div class="booking-top">
+              <div class="svc">${b.service}</div>
+              <span class="status-pill ${b.proSettled ? 'status-done' : b.paid ? 'status-transit' : 'status-confirmed'}">
+                ${b.proSettled ? t('settled') : b.paid ? t('pending') : 'Awaiting payment'}
+              </span>
+            </div>
+            <div class="booking-meta">🕐 ${b.date}</div>
+            <div class="booking-meta">${t('customerPaid')}: ₹${b.serviceAmount != null ? b.serviceAmount : b.price}</div>
+            <div class="booking-meta" style="color:var(--green);font-weight:700">${t('yourEarning')}: ₹${b.proPayout != null ? b.proPayout : ''}</div>
+            <div class="booking-meta" style="color:var(--ink-soft)">${t('platformCut')}: ₹${b.commission != null ? b.commission : ''}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div style="padding:0 20px 24px">
+        <button class="btn-outline" id="pd-logout" style="color:var(--red);border-color:#FDEBEA">${t('partnerLogout')}</button>
+      </div>
+    </div>
+  `);
+  d.querySelector('#pd-back').onclick = () => { state.screen = 'partnerLogin'; render(); };
+  d.querySelector('#pd-logout').onclick = () => {
+    state.loggedInPartner = null;
+    state.screen = 'login';
+    render();
   };
   return d;
 }
