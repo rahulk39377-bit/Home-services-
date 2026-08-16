@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Home Services</title>
+<title>BoltHome</title>
+<meta name="theme-color" content="#0A2C6B">
+<meta name="description" content="Trusted home services at your door - Electrician, Plumber, Cleaner">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -390,6 +395,81 @@ input,textarea{font-family:inherit; border:none; outline:none; background:none;}
 <div id="viewport"></div>
 
 <script>
+/* ---------------- LANGUAGE ---------------- */
+const STR = {
+  en: {
+    tagline: 'Trusted home services at your door',
+    welcomeBack: 'Welcome back',
+    signInSub: 'Sign in to book trusted electricians',
+    email: 'Email', password: 'Password', forgot: 'Forgot password?',
+    signIn: 'Sign In', orContinue: 'or continue with',
+    noAccount: "Don't have an account?", signUp: 'Sign Up',
+    createAccount: 'Create account', joinSub: 'Join thousands of happy homeowners',
+    fullName: 'Full name', agreeTerms: 'I agree to the', termsService: 'Terms of Service', and: 'and', privacyPolicy: 'Privacy Policy',
+    createBtn: 'Create Account', haveAccount: 'Already have an account?',
+    searchPlaceholder: 'Search services or electricians...',
+    popularCategories: 'Popular categories', bookNow: '⚡ Book an Electrician Now',
+    nearbyElectricians: 'Nearby electricians', viewMap: 'View Map',
+    availableNow: 'Available now', busy: 'Busy',
+    comingSoon: 'Coming soon for this service',
+    home: 'Home', bookings: 'Bookings', map: 'Map', profile: 'Profile',
+    editProfile: 'Edit Profile', savedAddresses: 'Saved Addresses',
+    notifications: 'Notifications', privacySecurity: 'Privacy & Security', logOut: 'Log Out',
+    upcoming: 'Upcoming', past: 'Past', myBookings: 'My Bookings',
+    noBookings: 'No bookings', cancel: 'Cancel', track: 'Track',
+    payNow: 'Pay Now', viewInvoice: 'View Invoice', invoice: 'Invoice',
+    becomePartner: 'Become a Partner', becomePartnerSub: 'Earn money on your own schedule',
+    bookPrefix: 'Book a', nearbyPrefix: 'Nearby',
+    partnerTitle: 'Become a Partner', partnerSub: 'Join BoltHome and start earning',
+    partnerName: 'Full name', partnerPhone: 'Phone number', partnerService: 'Service you provide',
+    partnerExp: 'Years of experience', partnerCity: 'City / Area', partnerSubmit: 'Submit Application',
+    partnerSuccess: 'Application Submitted!', partnerSuccessSub: "We'll review your details and contact you within 48 hours.",
+    partnerAlready: "You're a registered partner", done: 'Done',
+    saveChanges: 'Save Changes', profileUpdated: 'Profile updated!',
+    addAddress: 'Add Address', addressLabel: 'Label (e.g. Home, Office)', addressText: 'Full address',
+    add: 'Add', noAddresses: 'No saved addresses yet',
+    notifBookingUpdates: 'Booking updates', notifPromos: 'Offers & promotions', notifReminders: 'Service reminders',
+    privacyText: 'Your data is encrypted and never shared with third parties without consent. You can request deletion of your account and data anytime by contacting support@bolthome.com.',
+    close: 'Close'
+  },
+  hi: {
+    tagline: 'Aapke ghar par bharosemand seva',
+    welcomeBack: 'Wapas swagat hai',
+    signInSub: 'Bharosemand electrician book karne ke liye sign in karein',
+    email: 'Email', password: 'Password', forgot: 'Password bhool gaye?',
+    signIn: 'Sign In', orContinue: 'ya iske saath jaari rakhein',
+    noAccount: 'Account nahi hai?', signUp: 'Sign Up',
+    createAccount: 'Account banayein', joinSub: 'Hazaron khush ghar-maalikon ke saath judein',
+    fullName: 'Pura naam', agreeTerms: 'Main sehmat hoon', termsService: 'Seva ki Sharton', and: 'aur', privacyPolicy: 'Privacy Policy',
+    createBtn: 'Account Banayein', haveAccount: 'Pehle se account hai?',
+    searchPlaceholder: 'Seva ya electrician khojein...',
+    popularCategories: 'Lokpriya categories', bookNow: '⚡ Abhi Electrician Book Karein',
+    nearbyElectricians: 'Aas-paas ke electrician', viewMap: 'Map Dekhein',
+    availableNow: 'Abhi available', busy: 'Vyast',
+    comingSoon: 'Yeh seva jald aa rahi hai',
+    home: 'Home', bookings: 'Bookings', map: 'Map', profile: 'Profile',
+    editProfile: 'Profile Edit Karein', savedAddresses: 'Saved Address',
+    notifications: 'Notifications', privacySecurity: 'Privacy & Security', logOut: 'Log Out',
+    upcoming: 'Upcoming', past: 'Purani', myBookings: 'Meri Bookings',
+    noBookings: 'Koi booking nahi', cancel: 'Cancel', track: 'Track',
+    payNow: 'Abhi Pay Karein', viewInvoice: 'Invoice Dekhein', invoice: 'Invoice',
+    becomePartner: 'Partner Banein', becomePartnerSub: 'Apne time pe kamayein',
+    bookPrefix: 'Book Karein', nearbyPrefix: 'Aas-paas ke',
+    partnerTitle: 'Partner Banein', partnerSub: 'BoltHome join karein aur kamana shuru karein',
+    partnerName: 'Pura naam', partnerPhone: 'Phone number', partnerService: 'Aap kaunsi seva dete hain',
+    partnerExp: 'Anubhav (saal)', partnerCity: 'Sheher / Ilaka', partnerSubmit: 'Application Bhejein',
+    partnerSuccess: 'Application Bhej Diya!', partnerSuccessSub: 'Hum aapki details check karke 48 ghante mein sampark karenge.',
+    partnerAlready: 'Aap registered partner hain', done: 'Done',
+    saveChanges: 'Save Karein', profileUpdated: 'Profile update ho gaya!',
+    addAddress: 'Address Jodein', addressLabel: 'Label (jaise Home, Office)', addressText: 'Pura address',
+    add: 'Jodein', noAddresses: 'Abhi tak koi saved address nahi',
+    notifBookingUpdates: 'Booking updates', notifPromos: 'Offers aur promotions', notifReminders: 'Seva reminders',
+    privacyText: 'Aapka data encrypted hai aur bina sehmati ke kabhi share nahi kiya jaata. Account/data delete karne ke liye support@bolthome.com par sampark karein.',
+    close: 'Band Karein'
+  }
+};
+function t(key) { return (STR[state.lang || 'en'][key]) || key; }
+
 /* ---------------- DATA ---------------- */
 const DATA = {
   electrician: {
@@ -417,16 +497,92 @@ const DATA = {
       { id: 3, name: 'Vikram Singh', initials: 'VS', rating: 4.8, jobs: 301, dist: '0.8 km', avail: false, skills: ['Emergency', 'Wiring', 'AC'], about: '24/7 emergency electrician. Fastest response in the area.', reviews: [{ user: 'Rohan M.', stars: 5, text: 'Saved us during a power outage at night!' }] },
       { id: 4, name: 'Anil Kumar', initials: 'AK', rating: 4.6, jobs: 98, dist: '3.1 km', avail: true, skills: ['Fan', 'Lighting'], about: 'Friendly and reliable. Great for ceiling fans and LED installations.', reviews: [] },
     ]
+  },
+  plumber: {
+    label: 'Plumber',
+    emoji: '🔧',
+    categories: [
+      { emoji: '🚰', label: 'Tap Fix' },
+      { emoji: '🚽', label: 'Toilet' },
+      { emoji: '🛁', label: 'Bathroom' },
+      { emoji: '💧', label: 'Leak' },
+      { emoji: '🔥', label: 'Geyser' },
+      { emoji: '🚨', label: 'Emergency' },
+    ],
+    services: [
+      { emoji: '🚰', label: 'Tap Repair', price: 249 },
+      { emoji: '🚽', label: 'Toilet Fix', price: 399 },
+      { emoji: '💧', label: 'Leak Fixing', price: 349 },
+      { emoji: '🔥', label: 'Geyser Installation', price: 599 },
+      { emoji: '🛁', label: 'Bathroom Fitting', price: 749 },
+      { emoji: '🚨', label: 'Emergency Call', price: 899 },
+    ],
+    professionals: [
+      { id: 11, name: 'Manoj Yadav', initials: 'MY', rating: 4.8, jobs: 189, dist: '1.5 km', avail: true, skills: ['Tap Fix', 'Leak', 'Geyser'], about: 'Experienced plumber specializing in leak repairs and geyser installation.', reviews: [{ user: 'Sanjay T.', stars: 5, text: 'Fixed the leak in no time, very neat work.' }] },
+      { id: 12, name: 'Deepak Verma', initials: 'DV', rating: 4.6, jobs: 132, dist: '2.1 km', avail: true, skills: ['Toilet', 'Bathroom'], about: 'Expert in bathroom fittings and toilet installations.', reviews: [{ user: 'Kavita J.', stars: 4, text: 'Good quality work, reasonable price.' }] },
+      { id: 13, name: 'Sanjay Rao', initials: 'SR', rating: 4.9, jobs: 267, dist: '0.9 km', avail: false, skills: ['Emergency', 'Leak', 'Tap Fix'], about: '24/7 emergency plumber, quick response guaranteed.', reviews: [] },
+    ]
+  },
+  cleaner: {
+    label: 'Cleaner',
+    emoji: '🧹',
+    categories: [
+      { emoji: '🏠', label: 'Home Clean' },
+      { emoji: '🍽️', label: 'Kitchen' },
+      { emoji: '🛋️', label: 'Sofa' },
+      { emoji: '🪟', label: 'Windows' },
+      { emoji: '🚿', label: 'Bathroom' },
+      { emoji: '📦', label: 'Deep Clean' },
+    ],
+    services: [
+      { emoji: '🏠', label: 'Full Home Cleaning', price: 599 },
+      { emoji: '🍽️', label: 'Kitchen Cleaning', price: 349 },
+      { emoji: '🛋️', label: 'Sofa Cleaning', price: 449 },
+      { emoji: '🪟', label: 'Window Cleaning', price: 299 },
+      { emoji: '🚿', label: 'Bathroom Cleaning', price: 349 },
+      { emoji: '📦', label: 'Deep Cleaning', price: 999 },
+    ],
+    professionals: [
+      { id: 21, name: 'Sunita Devi', initials: 'SD', rating: 4.9, jobs: 341, dist: '1.0 km', avail: true, skills: ['Home Clean', 'Kitchen', 'Deep Clean'], about: 'Highly rated cleaner with attention to detail. Brings own supplies.', reviews: [{ user: 'Ritu M.', stars: 5, text: 'House looked spotless after her visit!' }] },
+      { id: 22, name: 'Pooja Sharma', initials: 'PS', rating: 4.7, jobs: 198, dist: '1.8 km', avail: true, skills: ['Sofa', 'Windows', 'Bathroom'], about: 'Specializes in sofa and window deep cleaning.', reviews: [{ user: 'Manish K.', stars: 5, text: 'Sofa looks brand new now.' }] },
+      { id: 23, name: 'Rekha Singh', initials: 'RS', rating: 4.5, jobs: 87, dist: '2.6 km', avail: true, skills: ['Home Clean', 'Bathroom'], about: 'Reliable and punctual, great for weekly cleaning.', reviews: [] },
+    ]
   }
 };
 
 const SLOTS = ['10:00 AM', '12:30 PM', '3:00 PM', '5:30 PM'];
+const UPI_ID = 'rahulk39377-1@oksbi';
+const UPI_PAYEE_NAME = 'BoltHome';
+const COMMISSION_RATE = 0.15;
+function calcCommission(serviceAmount) { return Math.round(serviceAmount * COMMISSION_RATE); }
+
+/* ---------------- PERSISTENCE ---------------- */
+function loadPersisted() {
+  try {
+    const raw = localStorage.getItem('bh_state');
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) { return {}; }
+}
+function savePersisted() {
+  try {
+    localStorage.setItem('bh_state', JSON.stringify({
+      user: state.user,
+      bookings: state.bookings,
+      lang: state.lang,
+      serviceType: state.serviceType,
+      savedAddresses: state.savedAddresses,
+      notifPrefs: state.notifPrefs
+    }));
+  } catch (e) { /* storage unavailable */ }
+}
+const persisted = loadPersisted();
 
 /* ---------------- STATE ---------------- */
 const state = {
   screen: 'splash',
-  user: null,
-  serviceType: 'electrician',
+  user: persisted.user || null,
+  lang: persisted.lang || 'en',
+  serviceType: persisted.serviceType || 'electrician',
   selectedPro: null,
   bookingStep: 1,
   selectedService: null,
@@ -435,12 +591,14 @@ const state = {
   paymentMethod: 'upi',
   pendingBooking: null,
   invoiceBooking: null,
-  bookings: [
-    { id: 101, service: 'Fan Installation', pro: 'Rahul Mehta', date: 'Today, 3:00 PM', status: 'confirmed', price: 328, serviceAmount: 299, paid: false, paymentMethod: 'Pay later', invoiceNo: null },
-    { id: 102, service: 'Wiring Fix', pro: 'Suresh Patel', date: '28 Jul 2026', status: 'done', price: 478, serviceAmount: 449, paid: true, paymentMethod: 'UPI', invoiceNo: 'INV-2026-102', note: 'Kitchen wiring short circuit' },
+  bookings: persisted.bookings || [
+    { id: 101, service: 'Fan Installation', pro: 'Rahul Mehta', date: 'Today, 3:00 PM', status: 'confirmed', price: 344, serviceAmount: 299, paid: false, paymentMethod: 'Pay later', invoiceNo: null },
+    { id: 102, service: 'Wiring Fix', pro: 'Suresh Patel', date: '28 Jul 2026', status: 'done', price: 516, serviceAmount: 449, paid: true, paymentMethod: 'UPI', invoiceNo: 'INV-2026-102', note: 'Kitchen wiring short circuit' },
   ],
   activeTab: 'upcoming',
-  mapSelected: null
+  mapSelected: null,
+  savedAddresses: persisted.savedAddresses || [],
+  notifPrefs: persisted.notifPrefs || { bookingUpdates: true, promos: true, reminders: true }
 };
 
 /* ---------------- ICONS (inline SVGs) ---------------- */
@@ -489,10 +647,13 @@ function render() {
     invoice: renderInvoice,
     bookings: renderBookings,
     proProfile: renderProProfile,
-    profile: renderProfile
+    profile: renderProfile,
+    partner: renderPartner,
+    addresses: renderAddresses
   };
   const fn = screens[state.screen] || renderSplash;
   vp.appendChild(fn());
+  savePersisted();
 }
 
 /* ---------------- SCREENS ---------------- */
@@ -501,7 +662,7 @@ function renderSplash() {
     <div class="splash">
       <div class="bolt-logo">${ICONS.bolt}</div>
       <h1>BoltHome</h1>
-      <p>Trusted home services at your door</p>
+      <p>${t('tagline')}</p>
       <div class="spinner"></div>
     </div>
   `);
@@ -516,33 +677,34 @@ function renderLogin() {
   const d = el(`
     <div class="auth-wrap">
       <div class="auth-logo">${ICONS.bolt}</div>
-      <div class="auth-title">Welcome back</div>
-      <div class="auth-sub">Sign in to book trusted electricians</div>
+      <div class="auth-title">${t('welcomeBack')}</div>
+      <div class="auth-sub">${t('signInSub')}</div>
 
       <div class="field">
-        <label>Email</label>
+        <label>${t('email')}</label>
         <div class="input-box">${ICONS.mail}<input type="email" id="login-email" placeholder="you@example.com" value="demo@bolthome.com"></div>
       </div>
       <div class="field">
-        <label>Password</label>
+        <label>${t('password')}</label>
         <div class="input-box">${ICONS.lock}<input type="password" id="login-pass" placeholder="••••••••" value="demo1234"></div>
       </div>
       <div class="row-between">
         <span></span>
-        <button class="link-text">Forgot password?</button>
+        <button class="link-text">${t('forgot')}</button>
       </div>
-      <button class="btn-primary" id="btn-login">Sign In</button>
+      <button class="btn-primary" id="btn-login">${t('signIn')}</button>
 
-      <div class="divider">or continue with</div>
+      <div class="divider">${t('orContinue')}</div>
       <div class="social-row">
         <button class="btn-outline">${ICONS.google} Google</button>
         <button class="btn-outline">${ICONS.apple} Apple</button>
       </div>
-      <div class="bottom-note">Don't have an account? <b id="go-signup">Sign Up</b></div>
+      <div class="bottom-note">${t('noAccount')} <b id="go-signup">${t('signUp')}</b></div>
     </div>
   `);
   d.querySelector('#btn-login').onclick = () => {
-    state.user = { name: 'Alex Kumar', email: 'demo@bolthome.com', initials: 'AK' };
+    const email = d.querySelector('#login-email').value.trim() || 'demo@bolthome.com';
+    state.user = { name: 'Alex Kumar', email, initials: 'AK' };
     state.screen = 'home';
     render();
   };
@@ -555,27 +717,27 @@ function renderSignup() {
     <div class="auth-wrap">
       <button class="back-arrow" id="back-login">${ICONS.back}</button>
       <div class="auth-logo">${ICONS.bolt}</div>
-      <div class="auth-title">Create account</div>
-      <div class="auth-sub">Join thousands of happy homeowners</div>
+      <div class="auth-title">${t('createAccount')}</div>
+      <div class="auth-sub">${t('joinSub')}</div>
 
       <div class="field">
-        <label>Full name</label>
+        <label>${t('fullName')}</label>
         <div class="input-box">${ICONS.user}<input type="text" placeholder="Alex Kumar"></div>
       </div>
       <div class="field">
-        <label>Email</label>
+        <label>${t('email')}</label>
         <div class="input-box">${ICONS.mail}<input type="email" placeholder="you@example.com"></div>
       </div>
       <div class="field">
-        <label>Password</label>
+        <label>${t('password')}</label>
         <div class="input-box">${ICONS.lock}<input type="password" placeholder="Min. 8 characters"></div>
       </div>
       <div class="checkbox-row">
         <input type="checkbox" id="terms" checked>
-        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+        <label for="terms">${t('agreeTerms')} <a href="#">${t('termsService')}</a> ${t('and')} <a href="#">${t('privacyPolicy')}</a></label>
       </div>
-      <button class="btn-primary" id="btn-signup">Create Account</button>
-      <div class="bottom-note">Already have an account? <b id="go-login">Sign In</b></div>
+      <button class="btn-primary" id="btn-signup">${t('createBtn')}</button>
+      <div class="bottom-note">${t('haveAccount')} <b id="go-login">${t('signIn')}</b></div>
     </div>
   `);
   d.querySelector('#back-login').onclick = () => { state.screen = 'login'; render(); };
@@ -589,7 +751,7 @@ function renderSignup() {
 }
 
 function renderHome() {
-  const data = DATA.electrician;
+  const data = DATA[state.serviceType] || DATA.electrician;
   const pros = data.professionals;
 
   const d = el(`
@@ -600,19 +762,30 @@ function renderHome() {
             <div class="bolt-mini">${ICONS.bolt}</div>
             <span>BoltHome</span>
           </div>
+          <button class="bell-btn" id="lang-toggle" style="width:auto;padding:0 10px;font-size:11.5px;font-weight:700;margin-right:8px;">${(state.lang || 'en').toUpperCase()}</button>
           <button class="bell-btn">${ICONS.bell}<span class="bell-dot"></span></button>
         </div>
-        <div class="search-bar">${ICONS.search.replace('class="icon"','style="color:rgba(255,255,255,0.7);width:18px;height:18px"')}<input placeholder="Search services or electricians..."></div>
+        <div class="search-bar">${ICONS.search.replace('class="icon"','style="color:rgba(255,255,255,0.7);width:18px;height:18px"')}<input placeholder="${t('searchPlaceholder')}"></div>
       </div>
 
       <div class="section" style="flex:1;padding-bottom:8px;">
         <div class="type-toggle">
-          <div class="type-pill active">⚡ Electrician</div>
-          <div class="type-pill">🔧 Plumber</div>
-          <div class="type-pill">🧹 Cleaner</div>
+          <div class="type-pill ${state.serviceType === 'electrician' ? 'active' : ''}" data-type="electrician">⚡ Electrician</div>
+          <div class="type-pill ${state.serviceType === 'plumber' ? 'active' : ''}" data-type="plumber">🔧 Plumber</div>
+          <div class="type-pill ${state.serviceType === 'cleaner' ? 'active' : ''}" data-type="cleaner">🧹 Cleaner</div>
         </div>
 
-        <div class="section-title">Popular categories</div>
+        ${!(state.user && state.user.isPartner) ? `
+        <div class="partner-banner" id="partner-banner">
+          <div class="partner-banner-text">
+            <div class="partner-banner-title">${t('becomePartner')}</div>
+            <div class="partner-banner-sub">${t('becomePartnerSub')}</div>
+          </div>
+          <span class="chevron" style="color:#fff">${ICONS.chevron}</span>
+        </div>
+        ` : ''}
+
+        <div class="section-title">${t('popularCategories')}</div>
         <div class="cat-scroll">
           ${data.categories.map(c => `
             <div class="cat-chip" data-cat="${c.label}">
@@ -623,12 +796,12 @@ function renderHome() {
         </div>
 
         <button class="book-cta" id="start-booking">
-          ⚡ Book an Electrician Now
+          ${data.emoji} ${t('bookPrefix')} ${data.label}
         </button>
 
         <div class="list-head">
-          <div class="section-title" style="margin:0">Nearby electricians</div>
-          <button class="view-map-btn" id="view-map">${ICONS.location} View Map</button>
+          <div class="section-title" style="margin:0">${t('nearbyPrefix')} ${data.label}${state.lang === 'hi' ? '' : 's'}</div>
+          <button class="view-map-btn" id="view-map">${ICONS.location} ${t('viewMap')}</button>
         </div>
 
         ${pros.map(p => `
@@ -643,7 +816,7 @@ function renderHome() {
                 <span>•</span>
                 <span>${p.dist}</span>
               </div>
-              ${p.avail ? '<span class="avail-badge">Available now</span>' : '<span class="avail-badge" style="background:#FDEBEA;color:var(--red)">Busy</span>'}
+              ${p.avail ? `<span class="avail-badge">${t('availableNow')}</span>` : `<span class="avail-badge" style="background:#FDEBEA;color:var(--red)">${t('busy')}</span>`}
             </div>
             <span class="chevron">${ICONS.chevron}</span>
           </div>
@@ -654,6 +827,10 @@ function renderHome() {
     </div>
   `);
 
+  d.querySelector('#lang-toggle').onclick = () => {
+    state.lang = (state.lang === 'hi') ? 'en' : 'hi';
+    render();
+  };
   d.querySelector('#start-booking').onclick = () => {
     state.bookingStep = 1;
     state.selectedService = null;
@@ -664,6 +841,26 @@ function renderHome() {
     render();
   };
   d.querySelector('#view-map').onclick = () => { state.screen = 'map'; render(); };
+  d.querySelectorAll('.type-pill').forEach(pill => {
+    pill.onclick = () => {
+      state.serviceType = pill.dataset.type;
+      render();
+    };
+  });
+  const banner = d.querySelector('#partner-banner');
+  if (banner) banner.onclick = () => { state.screen = 'partner'; render(); };
+  d.querySelectorAll('.cat-chip').forEach(chip => {
+    chip.onclick = () => {
+      const idx = data.services.findIndex(s => s.label.toLowerCase().includes(chip.dataset.cat.toLowerCase()));
+      state.bookingStep = 1;
+      state.selectedService = idx >= 0 ? idx : null;
+      state.selectedSlot = null;
+      state.bookingNote = '';
+      state.selectedPro = null;
+      state.screen = 'booking';
+      render();
+    };
+  });
   d.querySelectorAll('.elec-card').forEach(card => {
     card.onclick = () => {
       state.selectedPro = pros.find(p => p.id === +card.dataset.id);
@@ -675,7 +872,7 @@ function renderHome() {
 }
 
 function renderMap() {
-  const pros = DATA.electrician.professionals;
+  const pros = (DATA[state.serviceType] || DATA.electrician).professionals;
   // Fake positions
   const positions = [
     { top: '42%', left: '48%' }, // me
@@ -708,7 +905,7 @@ function renderMap() {
       </div>
 
       <div class="map-bottom-card">
-        <div style="font-size:14px;font-weight:700;margin-bottom:10px;color:var(--blue-900)">4 electricians nearby</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:10px;color:var(--blue-900)">${pros.length} ${(DATA[state.serviceType] || DATA.electrician).label}${state.lang === 'hi' ? ' aas-paas' : 's nearby'}</div>
         <div style="display:flex;gap:10px;overflow-x:auto;">
           ${pros.slice(0,3).map(p => `
             <div style="flex-shrink:0;background:var(--blue-100);border-radius:12px;padding:12px 14px;min-width:140px;" data-id="${p.id}">
@@ -733,7 +930,7 @@ function renderMap() {
 }
 
 function renderBooking() {
-  const data = DATA.electrician;
+  const data = DATA[state.serviceType] || DATA.electrician;
   const step = state.bookingStep;
   const progress = (step / 4) * 100;
 
@@ -806,7 +1003,7 @@ function renderBooking() {
     <div style="display:flex;flex-direction:column;min-height:100vh">
       <div class="top-bar">
         <button class="back-arrow" style="margin:0" id="book-back">${ICONS.back}</button>
-        <h2>Book Electrician</h2>
+        <h2>${t('bookPrefix')} ${data.label}</h2>
       </div>
       <div class="progress-track"><div class="progress-fill" style="width:${progress}%"></div></div>
       ${content}
@@ -876,6 +1073,11 @@ function renderPayment() {
   const b = state.pendingBooking;
   if (!b) { state.screen = 'home'; return renderHome(); }
 
+  const commission = calcCommission(b.price);
+  const total = b.price + commission;
+  const upiUri = `upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_PAYEE_NAME)}&am=${total}&cu=INR&tn=${encodeURIComponent(b.service + ' booking')}`;
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiUri)}`;
+
   const methods = [
     { id: 'upi', icon: '📱', bg: '#E8F8EF', title: 'UPI', sub: 'GPay, PhonePe, Paytm' },
     { id: 'card', icon: '💳', bg: '#E7F0FF', title: 'Credit / Debit Card', sub: 'Visa, Mastercard, RuPay' },
@@ -895,8 +1097,8 @@ function renderPayment() {
           <div class="pay-row"><span>Service</span><span style="font-weight:600;color:var(--ink)">${b.emoji || '⚡'} ${b.service}</span></div>
           <div class="pay-row"><span>Time slot</span><span style="font-weight:600;color:var(--ink)">${b.date}</span></div>
           <div class="pay-row"><span>Service charge</span><span>₹${b.price}</span></div>
-          <div class="pay-row"><span>Platform fee</span><span>₹29</span></div>
-          <div class="pay-row total"><span>Total payable</span><span>₹${b.price + 29}</span></div>
+          <div class="pay-row"><span>Platform fee (15%)</span><span>₹${commission}</span></div>
+          <div class="pay-row total"><span>Total payable</span><span>₹${total}</span></div>
         </div>
 
         <div class="section-title">Select payment method</div>
@@ -910,11 +1112,21 @@ function renderPayment() {
             <div class="pay-radio"></div>
           </div>
         `).join('')}
+
+        ${state.paymentMethod === 'upi' ? `
+          <div style="background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-md);padding:18px;margin-top:14px;text-align:center">
+            <div style="font-size:12.5px;color:var(--ink-soft);margin-bottom:12px;font-weight:600">Scan &amp; Pay ₹${total}</div>
+            <img src="${qrUrl}" alt="UPI QR Code" width="180" height="180" style="border-radius:12px;border:1px solid var(--border)">
+            <div style="font-size:13px;font-weight:700;margin-top:12px;color:var(--blue-900)">${UPI_ID}</div>
+            <button class="btn-outline" id="upi-copy" style="margin-top:10px">📋 Copy UPI ID</button>
+            <button class="btn-primary" id="upi-open" style="margin-top:10px">${ICONS.boltWhite} Open in UPI App</button>
+          </div>
+        ` : ''}
       </div>
 
       <div class="bottom-fixed">
         <button class="btn-primary" id="pay-now">
-          ${state.paymentMethod === 'cod' ? 'Confirm Booking' : `Pay ₹${b.price + 29}`}
+          ${state.paymentMethod === 'cod' ? 'Confirm Booking' : state.paymentMethod === 'upi' ? "I've Paid — Confirm" : `Pay ₹${total}`}
         </button>
       </div>
     </div>
@@ -933,6 +1145,20 @@ function renderPayment() {
     };
   });
 
+  const upiOpenBtn = d.querySelector('#upi-open');
+  if (upiOpenBtn) {
+    upiOpenBtn.onclick = () => { window.location.href = upiUri; };
+  }
+  const upiCopyBtn = d.querySelector('#upi-copy');
+  if (upiCopyBtn) {
+    upiCopyBtn.onclick = () => {
+      navigator.clipboard?.writeText(UPI_ID).then(() => {
+        upiCopyBtn.textContent = '✓ Copied!';
+        setTimeout(() => { upiCopyBtn.innerHTML = '📋 Copy UPI ID'; }, 1500);
+      }).catch(() => alert('UPI ID: ' + UPI_ID));
+    };
+  }
+
   d.querySelector('#pay-now').onclick = () => {
     const methodLabels = { upi: 'UPI', card: 'Card', wallet: 'Wallet', cod: 'Pay later' };
     const isPaid = state.paymentMethod !== 'cod';
@@ -944,7 +1170,7 @@ function renderPayment() {
       paymentMethod: methodLabels[state.paymentMethod],
       invoiceNo: invNo,
       serviceAmount: b.serviceAmount != null ? b.serviceAmount : b.price,
-      price: (b.serviceAmount != null ? b.serviceAmount : b.price) + 29,
+      price: (b.serviceAmount != null ? b.serviceAmount : b.price) + calcCommission(b.serviceAmount != null ? b.serviceAmount : b.price),
       status: 'confirmed'
     };
     state.bookings.unshift(finalBooking);
@@ -1039,11 +1265,11 @@ function renderInvoice() {
                     <div style="font-size:11.5px;color:var(--ink-soft);margin-top:2px">${b.date} • ${b.pro}</div>
                     ${b.note ? `<div style="font-size:11.5px;color:var(--ink-soft);margin-top:2px">Note: ${b.note}</div>` : ''}
                   </td>
-                  <td class="right">₹${b.serviceAmount != null ? b.serviceAmount : (b.price - 29)}</td>
+                  <td class="right">₹${b.serviceAmount != null ? b.serviceAmount : Math.round((b.price) / (1 + COMMISSION_RATE))}</td>
                 </tr>
                 <tr>
-                  <td>Platform fee</td>
-                  <td class="right">₹29</td>
+                  <td>Platform fee (15%)</td>
+                  <td class="right">₹${b.serviceAmount != null ? calcCommission(b.serviceAmount) : (b.price - Math.round((b.price) / (1 + COMMISSION_RATE)))}</td>
                 </tr>
               </tbody>
             </table>
@@ -1092,17 +1318,17 @@ function renderBookings() {
   const d = el(`
     <div style="display:flex;flex-direction:column;min-height:100vh">
       <div class="top-bar" style="padding-bottom:4px">
-        <h2 style="margin:0">My Bookings</h2>
+        <h2 style="margin:0">${t('myBookings')}</h2>
       </div>
       <div class="tabs">
-        <button class="tab-btn ${state.activeTab === 'upcoming' ? 'active' : ''}" data-tab="upcoming">Upcoming</button>
-        <button class="tab-btn ${state.activeTab === 'past' ? 'active' : ''}" data-tab="past">Past</button>
+        <button class="tab-btn ${state.activeTab === 'upcoming' ? 'active' : ''}" data-tab="upcoming">${t('upcoming')}</button>
+        <button class="tab-btn ${state.activeTab === 'past' ? 'active' : ''}" data-tab="past">${t('past')}</button>
       </div>
       <div style="flex:1;padding-bottom:12px">
         ${list.length === 0 ? `
           <div class="empty-state">
             <div class="emoji">📋</div>
-            <div>No ${state.activeTab} bookings</div>
+            <div>${t('noBookings')}</div>
           </div>
         ` : list.map(b => `
           <div class="booking-card" data-bid="${b.id}">
@@ -1117,15 +1343,15 @@ function renderBookings() {
             <div class="booking-meta">₹${b.price}${b.paid ? ' · Paid' : b.paymentMethod === 'Pay later' ? ' · Pay later' : ''}</div>
             <div class="booking-actions">
               ${b.status !== 'done' ? `
-                <button class="mini-btn cancel" data-action="cancel">Cancel</button>
-                <button class="mini-btn track" data-action="track">Track</button>
+                <button class="mini-btn cancel" data-action="cancel">${t('cancel')}</button>
+                <button class="mini-btn track" data-action="track">${t('track')}</button>
               ` : ''}
               ${b.paid && b.invoiceNo ? `
-                <button class="mini-btn track" data-action="invoice" style="${b.status !== 'done' ? '' : 'flex:1'}">Invoice</button>
+                <button class="mini-btn track" data-action="invoice" style="${b.status !== 'done' ? '' : 'flex:1'}">${t('invoice')}</button>
               ` : !b.paid && b.paymentMethod === 'Pay later' ? `
-                <button class="mini-btn track" data-action="pay" style="flex:1">Pay Now</button>
+                <button class="mini-btn track" data-action="pay" style="flex:1">${t('payNow')}</button>
               ` : b.paid ? `
-                <button class="mini-btn track" data-action="invoice" style="flex:1">View Invoice</button>
+                <button class="mini-btn track" data-action="invoice" style="flex:1">${t('viewInvoice')}</button>
               ` : ''}
             </div>
           </div>
@@ -1155,7 +1381,7 @@ function renderBookings() {
         state.screen = 'invoice';
         render();
       } else if (btn.dataset.action === 'pay') {
-        const sa = booking.serviceAmount != null ? booking.serviceAmount : booking.price - 29;
+        const sa = booking.serviceAmount != null ? booking.serviceAmount : Math.round(booking.price / (1 + COMMISSION_RATE));
         state.pendingBooking = { ...booking, price: sa, serviceAmount: sa };
         state.paymentMethod = 'upi';
         state.screen = 'payment';
@@ -1237,7 +1463,7 @@ function renderProfile() {
   const u = state.user || { name: 'Guest', email: '', initials: 'G' };
   const d = el(`
     <div style="display:flex;flex-direction:column;min-height:100vh">
-      <div class="top-bar"><h2>Profile</h2></div>
+      <div class="top-bar"><h2>${t('profile')}</h2></div>
       <div class="profile-card-top">
         <div class="avatar">${u.initials}</div>
         <div>
@@ -1246,11 +1472,12 @@ function renderProfile() {
         </div>
       </div>
       <div class="menu-list">
-        <div class="menu-item">${ICONS.user.replace('class="icon"','')} Edit Profile <span class="chevron">${ICONS.chevron}</span></div>
-        <div class="menu-item">${ICONS.location} Saved Addresses <span class="chevron">${ICONS.chevron}</span></div>
-        <div class="menu-item">${ICONS.bell.replace('stroke="#fff"','stroke="currentColor"')} Notifications <span class="chevron">${ICONS.chevron}</span></div>
-        <div class="menu-item">${ICONS.lock} Privacy & Security <span class="chevron">${ICONS.chevron}</span></div>
-        <div class="menu-item logout" id="logout">${ICONS.lock} Log Out</div>
+        <div class="menu-item" id="menu-edit">${ICONS.user.replace('class="icon"','')} ${t('editProfile')} <span class="chevron">${ICONS.chevron}</span></div>
+        <div class="menu-item" id="menu-address">${ICONS.location} ${t('savedAddresses')} <span class="chevron">${ICONS.chevron}</span></div>
+        <div class="menu-item" id="menu-notif">${ICONS.bell.replace('stroke="#fff"','stroke="currentColor"')} ${t('notifications')} <span class="chevron">${ICONS.chevron}</span></div>
+        <div class="menu-item" id="menu-privacy">${ICONS.lock} ${t('privacySecurity')} <span class="chevron">${ICONS.chevron}</span></div>
+        <div class="menu-item" id="menu-partner">${ICONS.bolt.replace('stroke="#fff"','stroke="var(--blue-600)"')} ${u.isPartner ? t('partnerAlready') : t('becomePartner')} <span class="chevron">${ICONS.chevron}</span></div>
+        <div class="menu-item logout" id="logout">${ICONS.lock} ${t('logOut')}</div>
       </div>
       ${renderBottomNav('profile')}
     </div>
@@ -1260,16 +1487,219 @@ function renderProfile() {
     state.screen = 'login';
     render();
   };
+  d.querySelector('#menu-address').onclick = () => { state.screen = 'addresses'; render(); };
+  d.querySelector('#menu-partner').onclick = () => { state.screen = 'partner'; render(); };
+
+  d.querySelector('#menu-edit').onclick = () => {
+    const overlay = el(`
+      <div class="modal-overlay">
+        <div class="modal-card" style="text-align:left">
+          <h3 style="margin-bottom:16px;text-align:center">${t('editProfile')}</h3>
+          <div class="field">
+            <label>${t('fullName')}</label>
+            <div class="input-box">${ICONS.user}<input type="text" id="edit-name" value="${u.name}"></div>
+          </div>
+          <div class="field">
+            <label>${t('email')}</label>
+            <div class="input-box">${ICONS.mail}<input type="email" id="edit-email" value="${u.email}"></div>
+          </div>
+          <button class="btn-primary" id="save-profile">${t('saveChanges')}</button>
+        </div>
+      </div>
+    `);
+    document.getElementById('viewport').appendChild(overlay);
+    overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+    overlay.querySelector('#save-profile').onclick = () => {
+      const name = overlay.querySelector('#edit-name').value.trim() || u.name;
+      const email = overlay.querySelector('#edit-email').value.trim() || u.email;
+      const initials = name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+      state.user = { ...state.user, name, email, initials };
+      overlay.remove();
+      render();
+    };
+  };
+
+  d.querySelector('#menu-notif').onclick = () => {
+    const prefs = state.notifPrefs;
+    const overlay = el(`
+      <div class="modal-overlay">
+        <div class="modal-card" style="text-align:left">
+          <h3 style="margin-bottom:16px;text-align:center">${t('notifications')}</h3>
+          <div class="checkbox-row"><input type="checkbox" id="np1" ${prefs.bookingUpdates ? 'checked' : ''}><label for="np1">${t('notifBookingUpdates')}</label></div>
+          <div class="checkbox-row"><input type="checkbox" id="np2" ${prefs.promos ? 'checked' : ''}><label for="np2">${t('notifPromos')}</label></div>
+          <div class="checkbox-row"><input type="checkbox" id="np3" ${prefs.reminders ? 'checked' : ''}><label for="np3">${t('notifReminders')}</label></div>
+          <button class="btn-primary" id="save-notif">${t('saveChanges')}</button>
+        </div>
+      </div>
+    `);
+    document.getElementById('viewport').appendChild(overlay);
+    overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+    overlay.querySelector('#save-notif').onclick = () => {
+      state.notifPrefs = {
+        bookingUpdates: overlay.querySelector('#np1').checked,
+        promos: overlay.querySelector('#np2').checked,
+        reminders: overlay.querySelector('#np3').checked
+      };
+      overlay.remove();
+      render();
+    };
+  };
+
+  d.querySelector('#menu-privacy').onclick = () => {
+    const overlay = el(`
+      <div class="modal-overlay">
+        <div class="modal-card">
+          <h3 style="margin-bottom:12px">${t('privacySecurity')}</h3>
+          <p style="text-align:left">${t('privacyText')}</p>
+          <button class="btn-primary" id="close-privacy">${t('close')}</button>
+        </div>
+      </div>
+    `);
+    document.getElementById('viewport').appendChild(overlay);
+    overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+    overlay.querySelector('#close-privacy').onclick = () => overlay.remove();
+  };
+
+  return d;
+}
+
+function renderAddresses() {
+  const d = el(`
+    <div style="display:flex;flex-direction:column;min-height:100vh">
+      <div class="top-bar">
+        <button class="back-arrow" style="margin:0" id="addr-back">${ICONS.back}</button>
+        <h2>${t('savedAddresses')}</h2>
+      </div>
+      <div style="padding:16px 20px;flex:1">
+        ${state.savedAddresses.length === 0 ? `
+          <div class="empty-state"><div class="emoji">📍</div><div>${t('noAddresses')}</div></div>
+        ` : state.savedAddresses.map((a, i) => `
+          <div class="booking-card" style="margin:0 0 12px" data-idx="${i}">
+            <div class="booking-top">
+              <div class="svc">${a.label}</div>
+              <button class="mini-btn cancel" data-del="${i}" style="flex:0 0 auto;padding:6px 12px">${t('cancel')}</button>
+            </div>
+            <div class="booking-meta">${a.text}</div>
+          </div>
+        `).join('')}
+
+        <div class="field" style="margin-top:16px">
+          <label>${t('addressLabel')}</label>
+          <div class="input-box">${ICONS.location}<input type="text" id="addr-label" placeholder="Home"></div>
+        </div>
+        <div class="field">
+          <label>${t('addressText')}</label>
+          <div class="input-box">${ICONS.location}<input type="text" id="addr-text" placeholder="House no, street, area, city"></div>
+        </div>
+        <button class="btn-primary" id="addr-add">${t('add')}</button>
+      </div>
+    </div>
+  `);
+  d.querySelector('#addr-back').onclick = () => { state.screen = 'profile'; render(); };
+  d.querySelectorAll('[data-del]').forEach(btn => {
+    btn.onclick = () => {
+      state.savedAddresses.splice(+btn.dataset.del, 1);
+      render();
+    };
+  });
+  d.querySelector('#addr-add').onclick = () => {
+    const label = d.querySelector('#addr-label').value.trim();
+    const text = d.querySelector('#addr-text').value.trim();
+    if (!label || !text) return alert('Please fill both fields');
+    state.savedAddresses.push({ label, text });
+    render();
+  };
+  return d;
+}
+
+function renderPartner() {
+  const u = state.user || {};
+  if (u.isPartner) {
+    const d = el(`
+      <div style="display:flex;flex-direction:column;min-height:100vh">
+        <div class="top-bar">
+          <button class="back-arrow" style="margin:0" id="partner-back">${ICONS.back}</button>
+          <h2>${t('partnerTitle')}</h2>
+        </div>
+        <div style="padding:40px 20px;text-align:center">
+          <div class="check-circle" style="margin:0 auto 18px">${ICONS.check}</div>
+          <h3 style="margin-bottom:8px;color:var(--blue-900)">${t('partnerAlready')}</h3>
+          <p style="color:var(--ink-soft);font-size:13.5px">${u.partnerService || ''}</p>
+        </div>
+      </div>
+    `);
+    d.querySelector('#partner-back').onclick = () => { state.screen = 'home'; render(); };
+    return d;
+  }
+
+  const data = DATA[state.serviceType] || DATA.electrician;
+  const d = el(`
+    <div style="display:flex;flex-direction:column;min-height:100vh">
+      <div class="top-bar">
+        <button class="back-arrow" style="margin:0" id="partner-back">${ICONS.back}</button>
+        <h2>${t('partnerTitle')}</h2>
+      </div>
+      <div style="padding:8px 20px 20px;flex:1">
+        <p style="color:var(--ink-soft);font-size:13.5px;margin-bottom:18px">${t('partnerSub')}</p>
+        <div class="field">
+          <label>${t('partnerName')}</label>
+          <div class="input-box">${ICONS.user}<input type="text" id="p-name" placeholder="${u.name || 'Alex Kumar'}"></div>
+        </div>
+        <div class="field">
+          <label>${t('partnerPhone')}</label>
+          <div class="input-box">${ICONS.mail}<input type="tel" id="p-phone" placeholder="+91 9XXXXXXXXX"></div>
+        </div>
+        <div class="field">
+          <label>${t('partnerService')}</label>
+          <div class="input-box">${ICONS.bolt.replace('stroke="#fff"','stroke="currentColor"').replace(/width="\d+" height="\d+"/, '')}<input type="text" id="p-service" value="${data.label}"></div>
+        </div>
+        <div class="field">
+          <label>${t('partnerExp')}</label>
+          <div class="input-box">${ICONS.calendar}<input type="number" id="p-exp" placeholder="3" min="0"></div>
+        </div>
+        <div class="field">
+          <label>${t('partnerCity')}</label>
+          <div class="input-box">${ICONS.location}<input type="text" id="p-city" placeholder="Darbhanga, Bihar"></div>
+        </div>
+        <button class="btn-primary" id="p-submit">${t('partnerSubmit')}</button>
+      </div>
+    </div>
+  `);
+  d.querySelector('#partner-back').onclick = () => { state.screen = 'home'; render(); };
+  d.querySelector('#p-submit').onclick = () => {
+    const name = d.querySelector('#p-name').value.trim() || (u.name || 'Alex Kumar');
+    const phone = d.querySelector('#p-phone').value.trim();
+    const service = d.querySelector('#p-service').value.trim() || data.label;
+    if (!phone) return alert('Please enter your phone number');
+    state.user = { ...(state.user || { name, email: '', initials: name.slice(0,2).toUpperCase() }), isPartner: true, partnerService: service, partnerPhone: phone };
+
+    const overlay = el(`
+      <div class="modal-overlay">
+        <div class="modal-card">
+          <div class="check-circle">${ICONS.check}</div>
+          <h3>${t('partnerSuccess')}</h3>
+          <p>${t('partnerSuccessSub')}</p>
+          <button class="btn-primary" id="p-done">${t('done')}</button>
+        </div>
+      </div>
+    `);
+    document.getElementById('viewport').appendChild(overlay);
+    overlay.querySelector('#p-done').onclick = () => {
+      overlay.remove();
+      state.screen = 'home';
+      render();
+    };
+  };
   return d;
 }
 
 function renderBottomNav(active) {
   return `
     <div class="bottom-nav">
-      <button class="nav-item ${active === 'home' ? 'active' : ''}" data-nav="home">${ICONS.home}<span>Home</span></button>
-      <button class="nav-item ${active === 'bookings' ? 'active' : ''}" data-nav="bookings">${ICONS.calendar}<span>Bookings</span></button>
-      <button class="nav-item ${active === 'map' ? 'active' : ''}" data-nav="map">${ICONS.map}<span>Map</span></button>
-      <button class="nav-item ${active === 'profile' ? 'active' : ''}" data-nav="profile">${ICONS.profile}<span>Profile</span></button>
+      <button class="nav-item ${active === 'home' ? 'active' : ''}" data-nav="home">${ICONS.home}<span>${t('home')}</span></button>
+      <button class="nav-item ${active === 'bookings' ? 'active' : ''}" data-nav="bookings">${ICONS.calendar}<span>${t('bookings')}</span></button>
+      <button class="nav-item ${active === 'map' ? 'active' : ''}" data-nav="map">${ICONS.map}<span>${t('map')}</span></button>
+      <button class="nav-item ${active === 'profile' ? 'active' : ''}" data-nav="profile">${ICONS.profile}<span>${t('profile')}</span></button>
     </div>
   `;
 }
@@ -1289,6 +1719,13 @@ document.getElementById('viewport').addEventListener('click', e => {
 
 /* ---------------- START ---------------- */
 render();
+
+/* ---------------- PWA SERVICE WORKER ---------------- */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>
