@@ -261,6 +261,26 @@ input,textarea{font-family:inherit; border:none; outline:none; background:none;}
 .modal-card{background:#fff; border-radius:24px; padding:30px 24px; text-align:center; max-width:340px; width:100%; animation:popIn 300ms cubic-bezier(.34,1.56,.64,1);}
 @keyframes popIn{from{transform:scale(0.85); opacity:0;} to{transform:scale(1); opacity:1;}}
 .check-circle{width:64px; height:64px; border-radius:50%; background:#E8F8EF; display:flex; align-items:center; justify-content:center; margin:0 auto 18px;}
+.id-card{
+  background:#fff; border-radius:var(--radius-lg); overflow:hidden; box-shadow:0 10px 30px rgba(10,44,107,0.14);
+  border:1px solid var(--border); max-width:340px; margin:0 auto;
+}
+.id-card-strip{height:8px; background:linear-gradient(90deg,#FF9933 0 33.33%, #FFFFFF 33.33% 66.66%, #138808 66.66% 100%);}
+.id-card-head{background:linear-gradient(145deg,var(--blue-500),var(--blue-900)); padding:22px 20px 46px; text-align:center; position:relative;}
+.id-card-head .brand{color:#fff; font-family:'Poppins',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.5px; opacity:0.9; display:flex; align-items:center; justify-content:center; gap:6px;}
+.id-card-photo{
+  width:88px; height:88px; border-radius:50%; object-fit:cover; border:4px solid #fff; box-shadow:0 6px 16px rgba(0,0,0,0.18);
+  position:absolute; left:50%; bottom:-44px; transform:translateX(-50%); background:linear-gradient(145deg,var(--blue-500),var(--blue-900));
+  display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:26px;
+}
+.id-card-body{padding:54px 22px 24px; text-align:center;}
+.id-card-name{font-family:'Poppins',sans-serif; font-weight:700; font-size:19px; color:var(--ink); margin-bottom:2px;}
+.id-card-role{color:var(--blue-600); font-weight:600; font-size:13px; margin-bottom:16px;}
+.id-card-divider{height:1px; background:var(--border); margin:14px 0;}
+.id-card-row{display:flex; justify-content:space-between; font-size:12.5px; padding:6px 0;}
+.id-card-row .k{color:var(--ink-soft);}
+.id-card-row .v{color:var(--ink); font-weight:600;}
+.id-card-badge{display:inline-flex; align-items:center; gap:5px; background:#E8F8EF; color:var(--green); font-size:11px; font-weight:700; padding:4px 10px; border-radius:8px; margin-top:14px;}
 .modal-card h3{font-size:17px; margin-bottom:8px; color:var(--blue-900);}
 .modal-card p{font-size:13.5px; color:var(--ink-soft); margin-bottom:22px; line-height:1.5;}
 
@@ -429,14 +449,36 @@ const STR = {
     addAddress: 'Add Address', addressLabel: 'Label (e.g. Home, Office)', addressText: 'Full address',
     add: 'Add', noAddresses: 'No saved addresses yet',
     notifBookingUpdates: 'Booking updates', notifPromos: 'Offers & promotions', notifReminders: 'Service reminders',
-    privacyText: 'Your data is encrypted and never shared with third parties without consent. You can request deletion of your account and data anytime by contacting support@bolthome.com.',
+    privacyText: 'Your data is encrypted and never shared with third parties without consent. You can request deletion of your account and data anytime by contacting rahulk39377@gmail.com.',
     close: 'Close',
     areYouPartner: 'Are you a service partner?', partnerLogin: 'Partner Login',
     partnerDashTitle: 'Partner Dashboard', selectYourName: 'Select your profile to continue',
     totalEarnings: 'Total Earnings', pendingPayout: 'Pending Payout', totalJobs: 'Total Jobs',
     yourBookings: 'Your Bookings', settled: 'Settled', pending: 'Pending',
     customerPaid: 'Customer paid', yourEarning: 'Your earning (85%)', platformCut: 'Platform cut (15%)',
-    partnerLogout: 'Log Out', noBookingsYet: 'No bookings assigned yet'
+    partnerLogout: 'Log Out', noBookingsYet: 'No bookings assigned yet',
+    aadhaarVerification: 'Aadhaar Verification', aadhaarVerified: 'Verified', aadhaarNotVerified: 'Not verified',
+    aadhaarNumber: 'Aadhaar Number', panNumber: 'PAN Number',
+    aadhaarPhoto: 'Aadhaar Card Photo', panPhoto: 'PAN Card Photo',
+    uploadPhoto: 'Upload Photo', changePhoto: 'Change Photo',
+    sendVerification: 'Send for Verification',
+    verificationNote: "Your details will open in your email app. Since email links can't attach photos automatically, please attach the downloaded Aadhaar & PAN photos before sending.",
+    downloadAadhaar: 'Download Aadhaar Photo', downloadPan: 'Download PAN Photo',
+    verificationSubmitted: 'Email app opened! Please attach the downloaded photos and hit send.',
+    fillAadhaarPan: 'Please enter Aadhaar number, PAN number and upload both photos',
+    partnerPhoto: 'Your Photo', uploadYourPhoto: 'Upload Photo', partnerIdLabel: 'Partner ID',
+    idCardService: 'Service', idCardCity: 'Area', idCardPhone: 'Phone', activePartner: 'Active Partner',
+    adminPanel: 'Admin Panel', adminEnterPin: 'Enter Admin PIN', adminWrongPin: 'Wrong PIN', adminSubmit: 'Enter',
+    adminTitle: 'Payout Management', adminAllPros: 'All Professionals', adminTotalPending: 'Total Pending Payout',
+    adminMarkPaid: 'Mark as Paid', adminPaidDone: 'Paid ✓', adminNoJobs: 'No completed jobs yet',
+    adminJobsCompleted: 'jobs completed', adminOwedTo: 'Owed to', markJobDone: 'Mark Job as Done',
+    jobStatusScheduled: 'Scheduled', jobMarkedDone: 'Job marked as done! Now visible to admin for payout.',
+    helpSupport: 'Help & Support', helpTitle: 'Help & Support', helpFaqTitle: 'Common Questions',
+    faqQ1: 'When will I get paid?', faqA1: 'After you mark a job as Done, it goes to the admin for payout. Payments are usually sent within 2-3 business days via UPI.',
+    faqQ2: "What does 'Mark Job as Done' mean?", faqA2: "Tap this only after you've completed the work at the customer's location. This notifies admin so your payout can be processed.",
+    faqQ3: 'How much commission does BoltHome take?', faqA3: 'BoltHome takes 15% commission on every job. You keep 85% of what the customer pays.',
+    faqQ4: 'I have a different problem', faqA4: 'Use the Call or WhatsApp button below to reach support directly, or email us.',
+    helpCall: 'Call Support', helpWhatsapp: 'WhatsApp Support', helpEmail: 'Email Support'
   },
   hi: {
     tagline: 'Aapke ghar par bharosemand seva',
@@ -470,14 +512,36 @@ const STR = {
     addAddress: 'Address Jodein', addressLabel: 'Label (jaise Home, Office)', addressText: 'Pura address',
     add: 'Jodein', noAddresses: 'Abhi tak koi saved address nahi',
     notifBookingUpdates: 'Booking updates', notifPromos: 'Offers aur promotions', notifReminders: 'Seva reminders',
-    privacyText: 'Aapka data encrypted hai aur bina sehmati ke kabhi share nahi kiya jaata. Account/data delete karne ke liye support@bolthome.com par sampark karein.',
+    privacyText: 'Aapka data encrypted hai aur bina sehmati ke kabhi share nahi kiya jaata. Account/data delete karne ke liye rahulk39377@gmail.com par sampark karein.',
     close: 'Band Karein',
     areYouPartner: 'Kya aap service partner hain?', partnerLogin: 'Partner Login',
     partnerDashTitle: 'Partner Dashboard', selectYourName: 'Aage badhne ke liye apna profile chunein',
     totalEarnings: 'Kul Kamai', pendingPayout: 'Pending Payout', totalJobs: 'Kul Jobs',
     yourBookings: 'Aapki Bookings', settled: 'Mil Gaya', pending: 'Pending',
     customerPaid: 'Customer ne diya', yourEarning: 'Aapki kamai (85%)', platformCut: 'Platform ka hissa (15%)',
-    partnerLogout: 'Log Out', noBookingsYet: 'Abhi tak koi booking assign nahi hui'
+    partnerLogout: 'Log Out', noBookingsYet: 'Abhi tak koi booking assign nahi hui',
+    aadhaarVerification: 'Aadhaar Verification', aadhaarVerified: 'Verified', aadhaarNotVerified: 'Verify nahi hua',
+    aadhaarNumber: 'Aadhaar Number', panNumber: 'PAN Number',
+    aadhaarPhoto: 'Aadhaar Card Photo', panPhoto: 'PAN Card Photo',
+    uploadPhoto: 'Photo Upload Karein', changePhoto: 'Photo Badlein',
+    sendVerification: 'Verification Ke Liye Bhejein',
+    verificationNote: 'Aapki details email app mein khul jayengi. Email link se photo automatically attach nahi hoti, isliye download ki hui Aadhaar aur PAN photo ko email mein manually attach karke bhejein.',
+    downloadAadhaar: 'Aadhaar Photo Download Karein', downloadPan: 'PAN Photo Download Karein',
+    verificationSubmitted: 'Email app khul gaya! Download ki hui photos attach karke send karein.',
+    fillAadhaarPan: 'Kripya Aadhaar number, PAN number aur dono photos upload karein',
+    partnerPhoto: 'Aapki Photo', uploadYourPhoto: 'Photo Upload Karein', partnerIdLabel: 'Partner ID',
+    idCardService: 'Seva', idCardCity: 'Ilaka', idCardPhone: 'Phone', activePartner: 'Active Partner',
+    adminPanel: 'Admin Panel', adminEnterPin: 'Admin PIN Daalein', adminWrongPin: 'Galat PIN', adminSubmit: 'Enter Karein',
+    adminTitle: 'Payout Management', adminAllPros: 'Sabhi Professionals', adminTotalPending: 'Kul Pending Payout',
+    adminMarkPaid: 'Paid Mark Karein', adminPaidDone: 'Paid ✓', adminNoJobs: 'Abhi koi kaam complete nahi hua',
+    adminJobsCompleted: 'kaam complete', adminOwedTo: 'Dena hai', markJobDone: 'Job Complete Karein',
+    jobStatusScheduled: 'Scheduled', jobMarkedDone: 'Job complete mark ho gaya! Ab admin ko payout ke liye dikhega.',
+    helpSupport: 'Help & Support', helpTitle: 'Help & Support', helpFaqTitle: 'Common Sawaal',
+    faqQ1: 'Payment kab milega?', faqA1: 'Job "Done" mark karne ke baad wo admin ke paas payout ke liye chala jaata hai. Payment usually 2-3 business days mein UPI se bhej diya jaata hai.',
+    faqQ2: "'Mark Job as Done' ka matlab kya hai?", faqA2: 'Ye tab hi dabayein jab aap customer ki location pe kaam poora kar chuke hon. Isse admin ko pata chalta hai ki payout process karna hai.',
+    faqQ3: 'BoltHome kitna commission leta hai?', faqA3: 'BoltHome har job pe 15% commission leta hai. Customer jitna deta hai usme se aapko 85% milta hai.',
+    faqQ4: 'Mera koi aur problem hai', faqA4: 'Neeche Call ya WhatsApp button se seedha support se baat karein, ya email karein.',
+    helpCall: 'Support Ko Call Karein', helpWhatsapp: 'WhatsApp Support', helpEmail: 'Email Support'
   }
 };
 function t(key) { return (STR[state.lang || 'en'][key]) || key; }
@@ -664,7 +728,9 @@ function render() {
     partner: renderPartner,
     addresses: renderAddresses,
     partnerLogin: renderPartnerLogin,
-    partnerDashboard: renderPartnerDashboard
+    partnerDashboard: renderPartnerDashboard,
+    adminGate: renderAdminGate,
+    admin: renderAdmin
   };
   const fn = screens[state.screen] || renderSplash;
   vp.appendChild(fn());
@@ -780,6 +846,9 @@ function renderHome() {
             <span>BoltHome</span>
           </div>
           <button class="bell-btn" id="lang-toggle" style="width:auto;padding:0 10px;font-size:11.5px;font-weight:700;margin-right:8px;">${(state.lang || 'en').toUpperCase()}</button>
+          <a href="https://wa.me/918089156724" target="_blank" class="bell-btn" style="background:#25D366;margin-right:8px" title="WhatsApp Help">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.15h-.01c-1.48 0-2.94-.4-4.21-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.37c0-4.54 3.7-8.24 8.27-8.24 2.21 0 4.28.86 5.84 2.42a8.19 8.19 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.26 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.24-.01-.37.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14-.01-.31-.01-.47-.01-.17 0-.43.06-.66.31-.23.24-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.73 2.64 4.2 3.7.59.25 1.04.4 1.4.52.59.19 1.12.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+          </a>
           <button class="bell-btn">${ICONS.bell}<span class="bell-dot"></span></button>
         </div>
         <div class="search-bar">${ICONS.search.replace('class="icon"','style="color:rgba(255,255,255,0.7);width:18px;height:18px"')}<input placeholder="${t('searchPlaceholder')}"></div>
@@ -1302,7 +1371,7 @@ function renderInvoice() {
 
         <div class="inv-footer">
           Thank you for choosing BoltHome<br>
-          support@bolthome.com • GSTIN: 29AABCT1332L1Z
+          rahulk39377@gmail.com • GSTIN: 29AABCT1332L1Z
         </div>
       </div>
 
@@ -1491,7 +1560,9 @@ function renderProfile() {
         <div class="menu-item" id="menu-address">${ICONS.location} ${t('savedAddresses')} <span class="chevron">${ICONS.chevron}</span></div>
         <div class="menu-item" id="menu-notif">${ICONS.bell.replace('stroke="#fff"','stroke="currentColor"')} ${t('notifications')} <span class="chevron">${ICONS.chevron}</span></div>
         <div class="menu-item" id="menu-privacy">${ICONS.lock} ${t('privacySecurity')} <span class="chevron">${ICONS.chevron}</span></div>
+        <div class="menu-item" id="menu-aadhaar">${ICONS.user.replace('class="icon"','')} ${t('aadhaarVerification')} <span style="font-size:11px;color:${u.aadhaarVerifiedSubmitted ? 'var(--green)' : 'var(--ink-soft)'};margin-left:auto;margin-right:6px">${u.aadhaarVerifiedSubmitted ? t('aadhaarVerified') : t('aadhaarNotVerified')}</span><span class="chevron">${ICONS.chevron}</span></div>
         <div class="menu-item" id="menu-partner">${ICONS.bolt.replace('stroke="#fff"','stroke="var(--blue-600)"')} ${u.isPartner ? t('partnerAlready') : t('becomePartner')} <span class="chevron">${ICONS.chevron}</span></div>
+        <div class="menu-item" id="menu-admin">${ICONS.lock} ${t('adminPanel')} <span class="chevron">${ICONS.chevron}</span></div>
         <div class="menu-item logout" id="logout">${ICONS.lock} ${t('logOut')}</div>
       </div>
       ${renderBottomNav('profile')}
@@ -1504,6 +1575,105 @@ function renderProfile() {
   };
   d.querySelector('#menu-address').onclick = () => { state.screen = 'addresses'; render(); };
   d.querySelector('#menu-partner').onclick = () => { state.screen = 'partner'; render(); };
+  d.querySelector('#menu-admin').onclick = () => { state.screen = 'adminGate'; render(); };
+
+  d.querySelector('#menu-aadhaar').onclick = () => {
+    let aadhaarPhotoData = null;
+    let panPhotoData = null;
+    const overlay = el(`
+      <div class="modal-overlay">
+        <div class="modal-card" style="text-align:left">
+          <h3 style="margin-bottom:16px;text-align:center">${t('aadhaarVerification')}</h3>
+          <div class="field">
+            <label>${t('aadhaarNumber')}</label>
+            <div class="input-box">${ICONS.user}<input type="text" id="av-aadhaar-num" placeholder="XXXX XXXX XXXX" maxlength="14"></div>
+          </div>
+          <div class="field">
+            <label>${t('panNumber')}</label>
+            <div class="input-box">${ICONS.user}<input type="text" id="av-pan-num" placeholder="ABCDE1234F" maxlength="10" style="text-transform:uppercase"></div>
+          </div>
+          <div class="field">
+            <label>${t('aadhaarPhoto')}</label>
+            <div class="input-box" id="av-aadhaar-box" style="cursor:pointer">${ICONS.user}<span id="av-aadhaar-label" style="color:var(--ink-soft)">${t('uploadPhoto')}</span></div>
+            <input type="file" id="av-aadhaar-file" accept="image/*" style="display:none">
+          </div>
+          <div class="field">
+            <label>${t('panPhoto')}</label>
+            <div class="input-box" id="av-pan-box" style="cursor:pointer">${ICONS.user}<span id="av-pan-label" style="color:var(--ink-soft)">${t('uploadPhoto')}</span></div>
+            <input type="file" id="av-pan-file" accept="image/*" style="display:none">
+          </div>
+          <p style="font-size:11.5px;color:var(--ink-soft);margin:4px 0 14px;line-height:1.4">${t('verificationNote')}</p>
+          <button class="btn-primary" id="av-submit">${t('sendVerification')}</button>
+        </div>
+      </div>
+    `);
+    document.getElementById('viewport').appendChild(overlay);
+    overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+
+    const aadhaarBox = overlay.querySelector('#av-aadhaar-box');
+    const aadhaarFile = overlay.querySelector('#av-aadhaar-file');
+    const aadhaarLabel = overlay.querySelector('#av-aadhaar-label');
+    aadhaarBox.onclick = () => aadhaarFile.click();
+    aadhaarFile.onchange = () => {
+      const f = aadhaarFile.files[0];
+      if (!f) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        aadhaarPhotoData = e.target.result;
+        aadhaarLabel.textContent = f.name;
+        aadhaarLabel.style.color = 'var(--ink)';
+      };
+      reader.readAsDataURL(f);
+    };
+
+    const panBox = overlay.querySelector('#av-pan-box');
+    const panFile = overlay.querySelector('#av-pan-file');
+    const panLabel = overlay.querySelector('#av-pan-label');
+    panBox.onclick = () => panFile.click();
+    panFile.onchange = () => {
+      const f = panFile.files[0];
+      if (!f) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        panPhotoData = e.target.result;
+        panLabel.textContent = f.name;
+        panLabel.style.color = 'var(--ink)';
+      };
+      reader.readAsDataURL(f);
+    };
+
+    overlay.querySelector('#av-submit').onclick = () => {
+      const aadhaarNum = overlay.querySelector('#av-aadhaar-num').value.trim();
+      const panNum = overlay.querySelector('#av-pan-num').value.trim().toUpperCase();
+      if (!aadhaarNum || !panNum || !aadhaarPhotoData || !panPhotoData) {
+        alert(t('fillAadhaarPan'));
+        return;
+      }
+
+      // Trigger downloads of both photos so user can attach them manually
+      const downloadFile = (dataUrl, filename) => {
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      };
+      downloadFile(aadhaarPhotoData, `aadhaar-${u.name || 'user'}.jpg`);
+      downloadFile(panPhotoData, `pan-${u.name || 'user'}.jpg`);
+
+      const subject = encodeURIComponent(`Aadhaar & PAN Verification - ${u.name || 'BoltHome User'}`);
+      const body = encodeURIComponent(
+        `Name: ${u.name || ''}\nEmail: ${u.email || ''}\nAadhaar Number: ${aadhaarNum}\nPAN Number: ${panNum}\n\n(Please attach the downloaded Aadhaar and PAN photo files to this email before sending.)`
+      );
+      window.location.href = `mailto:rahulk39377@gmail.com?subject=${subject}&body=${body}`;
+
+      state.user = { ...state.user, aadhaarVerifiedSubmitted: true };
+      overlay.remove();
+      alert(t('verificationSubmitted'));
+      render();
+    };
+  };
 
   d.querySelector('#menu-edit').onclick = () => {
     const overlay = el(`
@@ -1630,16 +1800,32 @@ function renderAddresses() {
 function renderPartner() {
   const u = state.user || {};
   if (u.isPartner) {
+    const initials = (u.name || 'P').split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
     const d = el(`
-      <div style="display:flex;flex-direction:column;min-height:100vh">
+      <div style="display:flex;flex-direction:column;min-height:100vh;background:var(--surface)">
         <div class="top-bar">
           <button class="back-arrow" style="margin:0" id="partner-back">${ICONS.back}</button>
           <h2>${t('partnerTitle')}</h2>
         </div>
-        <div style="padding:40px 20px;text-align:center">
-          <div class="check-circle" style="margin:0 auto 18px">${ICONS.check}</div>
-          <h3 style="margin-bottom:8px;color:var(--blue-900)">${t('partnerAlready')}</h3>
-          <p style="color:var(--ink-soft);font-size:13.5px">${u.partnerService || ''}</p>
+        <div style="padding:30px 20px 40px;flex:1">
+          <div class="id-card">
+            <div class="id-card-strip"></div>
+            <div class="id-card-head">
+              <div class="brand">⚡ BoltHome</div>
+              ${u.partnerPhoto
+                ? `<img class="id-card-photo" src="${u.partnerPhoto}" alt="">`
+                : `<div class="id-card-photo">${initials}</div>`}
+            </div>
+            <div class="id-card-body">
+              <div class="id-card-name">${u.name || ''}</div>
+              <div class="id-card-role">${u.partnerService || ''}</div>
+              <div class="id-card-divider"></div>
+              <div class="id-card-row"><span class="k">${t('partnerIdLabel')}</span><span class="v">${u.partnerId || ''}</span></div>
+              <div class="id-card-row"><span class="k">${t('idCardPhone')}</span><span class="v">${u.partnerPhone || ''}</span></div>
+              ${u.partnerCity ? `<div class="id-card-row"><span class="k">${t('idCardCity')}</span><span class="v">${u.partnerCity}</span></div>` : ''}
+              <div class="id-card-badge">${ICONS.check.replace(/width="\d+" height="\d+"/,'width="12" height="12"')} ${t('activePartner')}</div>
+            </div>
+          </div>
         </div>
       </div>
     `);
@@ -1648,6 +1834,7 @@ function renderPartner() {
   }
 
   const data = DATA[state.serviceType] || DATA.electrician;
+  let partnerPhotoData = null;
   const d = el(`
     <div style="display:flex;flex-direction:column;min-height:100vh">
       <div class="top-bar">
@@ -1656,6 +1843,14 @@ function renderPartner() {
       </div>
       <div style="padding:8px 20px 20px;flex:1">
         <p style="color:var(--ink-soft);font-size:13.5px;margin-bottom:18px">${t('partnerSub')}</p>
+        <div style="display:flex;justify-content:center;margin-bottom:18px">
+          <div id="p-photo-box" style="width:88px;height:88px;border-radius:50%;background:var(--blue-100);border:2px dashed var(--blue-500);display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;flex-direction:column;gap:2px">
+            <span id="p-photo-preview-wrap" style="display:contents"></span>
+            <span id="p-photo-icon" style="color:var(--blue-600)">${ICONS.user}</span>
+            <span id="p-photo-text" style="font-size:9.5px;color:var(--blue-600);font-weight:600">${t('uploadYourPhoto')}</span>
+          </div>
+          <input type="file" id="p-photo-file" accept="image/*" style="display:none">
+        </div>
         <div class="field">
           <label>${t('partnerName')}</label>
           <div class="input-box">${ICONS.user}<input type="text" id="p-name" placeholder="${u.name || 'Alex Kumar'}"></div>
@@ -1674,182 +1869,4 @@ function renderPartner() {
         </div>
         <div class="field">
           <label>${t('partnerCity')}</label>
-          <div class="input-box">${ICONS.location}<input type="text" id="p-city" placeholder="Darbhanga, Bihar"></div>
-        </div>
-        <button class="btn-primary" id="p-submit">${t('partnerSubmit')}</button>
-      </div>
-    </div>
-  `);
-  d.querySelector('#partner-back').onclick = () => { state.screen = 'home'; render(); };
-  d.querySelector('#p-submit').onclick = () => {
-    const name = d.querySelector('#p-name').value.trim() || (u.name || 'Alex Kumar');
-    const phone = d.querySelector('#p-phone').value.trim();
-    const service = d.querySelector('#p-service').value.trim() || data.label;
-    if (!phone) return alert('Please enter your phone number');
-    state.user = { ...(state.user || { name, email: '', initials: name.slice(0,2).toUpperCase() }), isPartner: true, partnerService: service, partnerPhone: phone };
-
-    const overlay = el(`
-      <div class="modal-overlay">
-        <div class="modal-card">
-          <div class="check-circle">${ICONS.check}</div>
-          <h3>${t('partnerSuccess')}</h3>
-          <p>${t('partnerSuccessSub')}</p>
-          <button class="btn-primary" id="p-done">${t('done')}</button>
-        </div>
-      </div>
-    `);
-    document.getElementById('viewport').appendChild(overlay);
-    overlay.querySelector('#p-done').onclick = () => {
-      overlay.remove();
-      state.screen = 'home';
-      render();
-    };
-  };
-  return d;
-}
-
-function getAllProfessionals() {
-  const list = [];
-  Object.keys(DATA).forEach(type => {
-    DATA[type].professionals.forEach(p => list.push({ ...p, serviceType: type }));
-  });
-  return list;
-}
-
-function renderPartnerLogin() {
-  const pros = getAllProfessionals();
-  const d = el(`
-    <div class="auth-wrap" style="padding-top:30px">
-      <button class="back-arrow" id="pl-back">${ICONS.back}</button>
-      <div class="auth-logo">${ICONS.bolt}</div>
-      <div class="auth-title">${t('partnerDashTitle')}</div>
-      <div class="auth-sub">${t('selectYourName')}</div>
-
-      <div style="display:flex;flex-direction:column;gap:10px">
-        ${pros.map(p => `
-          <div class="elec-card" data-id="${p.id}" data-type="${p.serviceType}" style="cursor:pointer">
-            <div class="avatar">${p.initials}</div>
-            <div class="elec-info">
-              <div class="name">${p.name}</div>
-              <div class="elec-meta">
-                <span class="star">★ ${p.rating}</span>
-                <span>•</span>
-                <span>${DATA[p.serviceType].label}</span>
-              </div>
-            </div>
-            <span class="chevron">${ICONS.chevron}</span>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  `);
-  d.querySelector('#pl-back').onclick = () => { state.screen = 'login'; render(); };
-  d.querySelectorAll('.elec-card').forEach(card => {
-    card.onclick = () => {
-      const type = card.dataset.type;
-      const pro = DATA[type].professionals.find(p => p.id === +card.dataset.id);
-      state.loggedInPartner = { ...pro, serviceType: type };
-      state.screen = 'partnerDashboard';
-      render();
-    };
-  });
-  return d;
-}
-
-function renderPartnerDashboard() {
-  const partner = state.loggedInPartner;
-  if (!partner) { state.screen = 'partnerLogin'; return renderPartnerLogin(); }
-
-  const myBookings = state.bookings.filter(b => b.pro === partner.name);
-  const settled = myBookings.filter(b => b.proSettled);
-  const pendingList = myBookings.filter(b => b.paid && !b.proSettled);
-  const totalEarnings = settled.reduce((sum, b) => sum + (b.proPayout || 0), 0);
-  const pendingPayout = pendingList.reduce((sum, b) => sum + (b.proPayout || 0), 0);
-
-  const d = el(`
-    <div style="display:flex;flex-direction:column;min-height:100vh">
-      <div class="profile-hero">
-        <button class="back-arrow" style="position:absolute;left:16px;top:16px;margin:0;background:rgba(255,255,255,0.2);border-color:transparent;color:#fff" id="pd-back">${ICONS.back}</button>
-        <div class="profile-avatar">${partner.initials}</div>
-        <h2>${partner.name}</h2>
-        <div class="verified-row">
-          <span class="verified-badge">${DATA[partner.serviceType].emoji} ${DATA[partner.serviceType].label}</span>
-          <span class="verified-badge">★ ${partner.rating}</span>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat"><b>₹${totalEarnings}</b><span>${t('totalEarnings')}</span></div>
-        <div class="stat"><b>₹${pendingPayout}</b><span>${t('pendingPayout')}</span></div>
-        <div class="stat"><b>${myBookings.length}</b><span>${t('totalJobs')}</span></div>
-      </div>
-
-      <div style="padding:24px 20px 20px;flex:1">
-        <div class="section-title">${t('yourBookings')}</div>
-        ${myBookings.length === 0 ? `
-          <div class="empty-state"><div class="emoji">📋</div><div>${t('noBookingsYet')}</div></div>
-        ` : myBookings.map(b => `
-          <div class="booking-card" style="margin:0 0 12px">
-            <div class="booking-top">
-              <div class="svc">${b.service}</div>
-              <span class="status-pill ${b.proSettled ? 'status-done' : b.paid ? 'status-transit' : 'status-confirmed'}">
-                ${b.proSettled ? t('settled') : b.paid ? t('pending') : 'Awaiting payment'}
-              </span>
-            </div>
-            <div class="booking-meta">🕐 ${b.date}</div>
-            <div class="booking-meta">${t('customerPaid')}: ₹${b.serviceAmount != null ? b.serviceAmount : b.price}</div>
-            <div class="booking-meta" style="color:var(--green);font-weight:700">${t('yourEarning')}: ₹${b.proPayout != null ? b.proPayout : ''}</div>
-            <div class="booking-meta" style="color:var(--ink-soft)">${t('platformCut')}: ₹${b.commission != null ? b.commission : ''}</div>
-          </div>
-        `).join('')}
-      </div>
-
-      <div style="padding:0 20px 24px">
-        <button class="btn-outline" id="pd-logout" style="color:var(--red);border-color:#FDEBEA">${t('partnerLogout')}</button>
-      </div>
-    </div>
-  `);
-  d.querySelector('#pd-back').onclick = () => { state.screen = 'partnerLogin'; render(); };
-  d.querySelector('#pd-logout').onclick = () => {
-    state.loggedInPartner = null;
-    state.screen = 'login';
-    render();
-  };
-  return d;
-}
-
-function renderBottomNav(active) {
-  return `
-    <div class="bottom-nav">
-      <button class="nav-item ${active === 'home' ? 'active' : ''}" data-nav="home">${ICONS.home}<span>${t('home')}</span></button>
-      <button class="nav-item ${active === 'bookings' ? 'active' : ''}" data-nav="bookings">${ICONS.calendar}<span>${t('bookings')}</span></button>
-      <button class="nav-item ${active === 'map' ? 'active' : ''}" data-nav="map">${ICONS.map}<span>${t('map')}</span></button>
-      <button class="nav-item ${active === 'profile' ? 'active' : ''}" data-nav="profile">${ICONS.profile}<span>${t('profile')}</span></button>
-    </div>
-  `;
-}
-
-/* ---------------- EVENT DELEGATION FOR NAV ---------------- */
-document.getElementById('viewport').addEventListener('click', e => {
-  const nav = e.target.closest('[data-nav]');
-  if (nav) {
-    const screen = nav.dataset.nav;
-    if (screen === 'map') state.screen = 'map';
-    else if (screen === 'home') state.screen = 'home';
-    else if (screen === 'bookings') state.screen = 'bookings';
-    else if (screen === 'profile') state.screen = 'profile';
-    render();
-  }
-});
-
-/* ---------------- START ---------------- */
-render();
-
-/* ---------------- PWA SERVICE WORKER ---------------- */
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
-  });
-}
-</script>
-</body>
-</html>
+          <div class="input-box">${ICONS.location}<input type="text" id="p-city" placeholder="Darbhanga, Bihar"
