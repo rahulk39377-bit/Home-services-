@@ -2,72 +2,70 @@
   "name": "BoltHome - Trusted Home Services",
   "short_name": "BoltHome",
   "description": "Trusted home services at your door - Electrician, Plumber, Cleaner",
-  "start_url": "/index.html",
-  "id": "/index.html",
-  "scope": "/",
+  "start_url": "./index.html",
+  "id": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0A2C6B",
   "theme_color": "#0A2C6B",
   "lang": "en",
-  "categories": ["business", "productivity", "utilities"],
+  "categories": [
+    "business",
+    "productivity",
+    "utilities"
+  ],
   "icons": [
     {
-      "src": "icons/icon-72.png",
+      "src": "icon-72.png",
       "sizes": "72x72",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-96.png",
+      "src": "icon-96.png",
       "sizes": "96x96",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-128.png",
+      "src": "icon-128.png",
       "sizes": "128x128",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-144.png",
+      "src": "icon-144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-384.png",
+      "src": "icon-384.png",
       "sizes": "384x384",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-192-maskable.png",
+      "src": "icon-192-maskable.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "icons/icon-512-maskable.png",
+      "src": "icon-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
@@ -75,18 +73,23 @@
   ],
   "screenshots": [
     {
-      "src": "screenshots/screenshot-narrow.png",
+      "src": "screenshot-narrow-2-profile.png",
       "sizes": "430x932",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "BoltHome home screen on mobile"
     },
     {
-      "src": "screenshots/screenshot-wide.png",
-      "sizes": "1280x800",
+      "src": "screenshot-profile-verified.png",
       "type": "image/png",
-      "form_factor": "wide",
-      "label": "BoltHome home screen on desktop"
+      "form_factor": "narrow",
+      "label": "BoltHome verified profile"
+    },
+    {
+      "src": "screenshot-profile.png",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "BoltHome profile"
     }
   ]
 }
